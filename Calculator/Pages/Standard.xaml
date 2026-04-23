@@ -1,0 +1,374 @@
+﻿<Page x:Class="Calculator2.Pages.Standard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Calculator2.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="300"
+      Title="Standard">
+
+    <Border Background="{StaticResource Brush_Layer3}">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                
+                <!--Header-->
+                <RowDefinition Height="50" />
+
+                <!--Output Display-->
+                <RowDefinition Height="120*" />
+                
+                <!--Input Buttons-->
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!--Header-->
+            <!--Menu Button-->
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="2"
+                    Height="40"
+                    Width="45"
+                    HorizontalAlignment="Left"
+                    Click="Click_Menu"
+                    Style="{DynamicResource Style_ButtonLayer3_5}">
+
+                <StackPanel>
+                    <Image Source="/Icons/menu.png"
+                            Height="25"
+                            Width="25" />
+                </StackPanel>
+            </Button>
+
+            <!--Title-->
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Margin="55, 0, 0, 0"
+                       Text="Standard"                       
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"                       
+                       Style="{StaticResource Font_TextBlockHeader}"/>
+
+            <!--Output Display-->
+            <ScrollViewer Grid.Row="1"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="4"
+                          Margin="2"
+                          x:Name="outputScrollviewer"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Visible">
+
+                <ScrollViewer.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource customscrollbar}"/>
+                </ScrollViewer.Resources>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="60*" />
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+                    
+                    <!--Display2-->
+                    <TextBlock Grid.Row="0"
+                               Margin="5, 0, 5, 0"
+                               x:Name="TextBlock_Calculation"
+                               Text=""
+                               Foreground="Gray"
+                               FontSize="18"
+                               FontWeight="Normal"
+                               HorizontalAlignment="Right"
+                               Style="{StaticResource Font_TextBlockOutputDisplay}"/>
+
+                    <!--Display1-->
+                    <TextBlock Grid.Row="1"
+                               Margin="5, 0, 5, 0"
+                               x:Name="TextBlock_InputAndResult"
+                               Text="0"
+                               Foreground="White"
+                               FontSize="50"
+                               HorizontalAlignment="Right"
+                               Style="{StaticResource Font_TextBlockOutputDisplay}"/>
+                </Grid>
+            </ScrollViewer>
+
+            <!--Input Buttons-->
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_BracketLeft">
+
+                <TextBlock Text="("
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_BracketRight">
+
+                <TextBlock Text=")"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="2"
+                    Grid.Column="2"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_ClearAllInput">
+
+                <TextBlock Text="CE"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="2"
+                    Grid.Column="3"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Backspace">
+
+                <Image Height="22"
+                       Width="22"
+                       Source="/Icons/backspace.png" />
+            </Button>
+
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Power1">
+
+                <TextBlock Text="^2"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="CLick_Power2">
+
+                <TextBlock Text="^"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Root1">
+
+                <TextBlock Text="2√"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="3"
+                    Grid.Column="3"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Root2">
+
+                <TextBlock Text="√"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Seven">
+
+                <TextBlock Text="7"
+                           FontSize="18"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="4"
+                    Grid.Column="1"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Eight">
+
+                <TextBlock Text="8"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="4"
+                    Grid.Column="2"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Nine">
+
+                <TextBlock Text="9"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="4"
+                    Grid.Column="3"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Divide">
+
+                <TextBlock Text="/"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="5"
+                    Grid.Column="0"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Four">
+
+                <TextBlock Text="4"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Five">
+
+                <TextBlock Text="5"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="5"
+                    Grid.Column="2"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Six">
+
+                <TextBlock Text="6"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="5"
+                    Grid.Column="3"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Multiply">
+
+                <TextBlock Text="*"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="6"
+                    Grid.Column="0"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_One">
+
+                <TextBlock Text="1"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="6"
+                    Grid.Column="1"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Two">
+
+                <TextBlock Text="2"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="6"
+                    Grid.Column="2"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Three">
+
+                <TextBlock Text="3"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="6"
+                    Grid.Column="3"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer5}"
+                    Click="Click_Subtract">
+
+                <TextBlock Text="-"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="7"
+                    Grid.Column="0"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_DecimalPoint">
+
+                <TextBlock Text="."
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="7"
+                    Grid.Column="1"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Zero">
+
+                <TextBlock Text="0"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="7"
+                    Grid.Column="2"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonLayer6}"
+                    Click="Click_Add">
+
+                <TextBlock Text="+"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+
+            <Button Grid.Row="7"
+                    Grid.Column="3"
+                    Margin="2"
+                    Style="{StaticResource Style_ButtonAccent1}"
+                    Click="Click_Calculate">
+
+                <TextBlock Text="="
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource Font_ButtonSign}"/>
+            </Button>
+        </Grid>
+    </Border>
+</Page>
