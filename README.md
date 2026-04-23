@@ -45,8 +45,21 @@ To build and run this project, you will need Visual Studio and the Windows App S
 git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git)
 
 # Navigate into the project folder
+
 cd YOUR_REPOSITORY
 
 # Open the .sln file in Visual Studio 2022
 # Set the "Calculator.WinUI" project as the Startup Project.
 # Press F5 or Ctrl+F5 to build and run.
+```
+
+## 🗺️ Roadmap (Next Steps)
+[x] Port legacy WPF logic to WinUI 3.
+
+[x] Implement Fluent Design and Lightweight Styling.
+
+[x] Refactor navigation and UI architecture.
+
+[ ] Responsive Design: Replace hardcoded Width/Height values with dynamic Grid star-sizing (*) to ensure the calculator scales beautifully across all window sizes.
+
+[ ] Add dark mode / light mode toggle switch.
