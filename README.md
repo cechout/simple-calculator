@@ -21,7 +21,7 @@ A sleek, feature-rich calculator built from the ground up for Windows 11. Origin
 
 | Standard Mode | Currency Converter | Menu Navigation |
 | :---: | :---: | :---: |
-| `<img src="link_to_standard_img" width="250"/>` | `<img src="link_to_currency_img" width="250"/>` | `<img src="link_to_menu_img" width="250"/>` |
+| <img width="506" height="849" alt="Screenshot 2026-04-23 203123" src="https://github.com/user-attachments/assets/0459b259-1b03-4b51-acfb-62579f9d0bb6" /> | <img width="511" height="850" alt="Screenshot 2026-04-23 203143" src="https://github.com/user-attachments/assets/90c5f175-f320-4562-bf62-1d8b239384c7" /> | <img width="509" height="850" alt="Screenshot 2026-04-23 203134" src="https://github.com/user-attachments/assets/ad0945de-731f-402d-8e4a-a41de50facae" /> |
 
 ## 🏗️ Technical Highlights (Why WinUI 3?)
 
