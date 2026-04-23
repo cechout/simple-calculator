@@ -1,9 +1,10 @@
-﻿using Calculator2.Classes;
+﻿using Calculator.Classes;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Calculator2.Pages
+namespace Calculator.Pages
 {
     public partial class Currency : Page
     {        

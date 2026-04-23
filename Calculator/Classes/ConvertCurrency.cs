@@ -1,4 +1,6 @@
-﻿namespace Calculator2.Classes
+﻿using System;
+
+namespace Calculator.Classes
 {
     class ConvertCurrency
     {

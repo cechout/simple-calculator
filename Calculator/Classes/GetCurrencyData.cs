@@ -1,7 +1,8 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Xml;
 
-namespace Calculator2.Classes
+namespace Calculator.Classes
 {
     class GetCurrencyData
     {

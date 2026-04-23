@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
-namespace Calculator2.Classes
+namespace Calculator.Classes
 {
     class Calculate
     {
@@ -10,7 +11,7 @@ namespace Calculator2.Classes
 
             int numberOfBrackets = 0;
             int currentBracketRank = 0;
-            int highestBracketRank;
+            int highestBracketRank; 
             int highestBracketPosition = 0;
 
             int numberOfPowerootCalculations;
