@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="Calculator_WinUI.Pages.Standard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Calculator_WinUI.Pages"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Border Background="{StaticResource Brush_Layer3}">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="2"
+                    Height="40"
+                    Width="45"
+                    HorizontalAlignment="Left"
+                    Click="Click_Menu"
+                    Style="{StaticResource Style_ButtonLayer3_5}">
+                <Button.Resources>
+                    <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                    ResourceKey="Brush_Layer4_5" />
+                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                    ResourceKey="Brush_Layer4_5" />
+                    <StaticResource x:Key="ButtonBackgroundPressed"
+                                    ResourceKey="Brush_Layer4" />
+                    <StaticResource x:Key="ButtonBorderBrushPressed"
+                                    ResourceKey="Brush_Layer4" />
+                </Button.Resources>
+                <StackPanel>
+                    <Image Source="ms-appx:///Assets/Icons/menu.png"
+                           Height="25"
+                           Width="25" />
+                </StackPanel>
+            </Button>
+
+            <TextBlock Grid.Row="0"
+                       Grid.ColumnSpan="4"
+                       Margin="55,0,0,0"
+                       Text="Standard"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource Font_TextBlockHeader}" />
+
+            <ScrollViewer Grid.Row="1"
+                          Grid.ColumnSpan="4"
+                          Margin="2"
+                          x:Name="outputScrollviewer"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Margin="5,0,5,0"
+                               x:Name="TextBlock_Calculation"
+                               Text=""
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom"
+                               Style="{StaticResource Font_TextBlockOutputDisplay}" />
+                    <TextBlock Grid.Row="1"
+                               Margin="5,0,5,0"
+                               x:Name="TextBlock_InputAndResult"
+                               Text="0"
+                               FontSize="50"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource Font_TextBlockOutputDisplay}" />
+                </Grid>
+            </ScrollViewer>
+
+
+            <Grid Grid.Row="2"
+                  Grid.RowSpan="2"
+                  Grid.ColumnSpan="4">
+                <Grid.Resources>
+                    <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                    ResourceKey="Brush_Layer6" />
+                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                    ResourceKey="Brush_Layer6" />
+                    <StaticResource x:Key="ButtonBackgroundPressed"
+                                    ResourceKey="Brush_Layer4" />
+                    <StaticResource x:Key="ButtonBorderBrushPressed"
+                                    ResourceKey="Brush_Layer4" />
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_BracketLeft">
+                    <TextBlock Text="("
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_BracketRight">
+                    <TextBlock Text=")"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_ClearAllInput">
+                    <TextBlock Text="CE"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="0"
+                        Grid.Column="3"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Backspace">
+                    <Image Height="22"
+                           Width="22"
+                           Source="ms-appx:///Assets/Icons/backspace.png" />
+                </Button>
+
+                <Button Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Power1">
+                    <TextBlock Text="^2"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="CLick_Power2">
+                    <TextBlock Text="^"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Root1">
+                    <TextBlock Text="2√"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Root2">
+                    <TextBlock Text="√"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+            </Grid>
+
+
+            <Grid Grid.Row="4"
+                  Grid.RowSpan="4"
+                  Grid.ColumnSpan="3">
+                <Grid.Resources>
+                    <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                    ResourceKey="Brush_Layer7" />
+                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                    ResourceKey="Brush_Layer7" />
+                    <StaticResource x:Key="ButtonBackgroundPressed"
+                                    ResourceKey="Brush_Layer5" />
+                    <StaticResource x:Key="ButtonBorderBrushPressed"
+                                    ResourceKey="Brush_Layer5" />
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Seven">
+                    <TextBlock Text="7"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Eight">
+                    <TextBlock Text="8"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Nine">
+                    <TextBlock Text="9"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+
+                <Button Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Four">
+                    <TextBlock Text="4"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Five">
+                    <TextBlock Text="5"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Six">
+                    <TextBlock Text="6"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+
+                <Button Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_One">
+                    <TextBlock Text="1"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Two">
+                    <TextBlock Text="2"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Three">
+                    <TextBlock Text="3"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+
+                <Button Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_DecimalPoint">
+                    <TextBlock Text="."
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Zero">
+                    <TextBlock Text="0"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="3"
+                        Grid.Column="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer6}"
+                        Click="Click_Add">
+                    <TextBlock Text="+"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+            </Grid>
+
+
+            <Grid Grid.Row="4"
+                  Grid.RowSpan="3"
+                  Grid.Column="3">
+                <Grid.Resources>
+                    <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                    ResourceKey="Brush_Layer6" />
+                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                    ResourceKey="Brush_Layer6" />
+                    <StaticResource x:Key="ButtonBackgroundPressed"
+                                    ResourceKey="Brush_Layer4" />
+                    <StaticResource x:Key="ButtonBorderBrushPressed"
+                                    ResourceKey="Brush_Layer4" />
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Divide">
+                    <TextBlock Text="/"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="1"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Multiply">
+                    <TextBlock Text="*"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+                <Button Grid.Row="2"
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Subtract">
+                    <TextBlock Text="-"
+                               Style="{StaticResource Font_ButtonSign}" />
+                </Button>
+            </Grid>
+
+            <Button Grid.Row="7"
+                    Grid.Column="3"
+                    Margin="2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Style="{StaticResource Style_ButtonAccent1}"
+                    Click="Click_Calculate">
+                <TextBlock Text="="
+                           Style="{StaticResource Font_ButtonSign}" />
+            </Button>
+
+        </Grid>
+    </Border>
+</Page>
