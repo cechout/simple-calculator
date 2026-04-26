@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="Calculator/Calculator.csproj" />
+  <Project Path="Calculator/Calculator.csproj" Id="77b23386-f64c-48c7-8de3-0d13acdd99d9" />
+  <Project Path="Calculator_WinUI/Calculator_WinUI.csproj">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
 </Solution>
