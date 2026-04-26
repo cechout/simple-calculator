@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="Calculator_WinUI.Pages.Menu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Calculator_WinUI.Pages"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Border Background="{StaticResource Brush_Layer3}">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="43" />
+                <RowDefinition Height="43" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="2"
+                    Height="40"
+                    Width="45"
+                    HorizontalAlignment="Left"
+                    Click="Click_Menu"
+                    Style="{StaticResource Style_ButtonLayer3_5}">
+                <Button.Resources>
+                    <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                    ResourceKey="Brush_Layer4_5" />
+                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                    ResourceKey="Brush_Layer4_5" />
+                    <StaticResource x:Key="ButtonBackgroundPressed"
+                                    ResourceKey="Brush_Layer4" />
+                    <StaticResource x:Key="ButtonBorderBrushPressed"
+                                    ResourceKey="Brush_Layer4" />
+                </Button.Resources>
+                <StackPanel>
+                    <Image Source="ms-appx:///Assets/Icons/menu.png"
+                           Height="25"
+                           Width="25" />
+                </StackPanel>
+            </Button>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="55,5,5,5"
+                       Text="Menu"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource Font_TextBlockHeader}" />
+
+
+            <Grid Grid.Row="2"
+                  Grid.RowSpan="3">
+                <Grid.Resources>
+                    <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                    ResourceKey="Brush_Layer4_5" />
+                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                    ResourceKey="Brush_Layer4_5" />
+                    <StaticResource x:Key="ButtonBackgroundPressed"
+                                    ResourceKey="Brush_Layer4" />
+                    <StaticResource x:Key="ButtonBorderBrushPressed"
+                                    ResourceKey="Brush_Layer4" />
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="43" />
+                    <RowDefinition Height="43" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0"
+                        Margin="2"
+                        Visibility="Visible"
+                        x:Name="Button_StandardEnabled"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="CLick_Standard">
+                    <Button.Resources>
+                        <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                        ResourceKey="Brush_Layer6" />
+                        <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                        ResourceKey="Brush_Layer6" />
+                        <StaticResource x:Key="ButtonBackgroundPressed"
+                                        ResourceKey="Brush_Layer4" />
+                        <StaticResource x:Key="ButtonBorderBrushPressed"
+                                        ResourceKey="Brush_Layer4" />
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Height="19"
+                                Width="5"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Background="{StaticResource Brush_Accent1}"
+                                CornerRadius="2" />
+                        <Image Source="ms-appx:///Assets/Icons/calculate.png"
+                               HorizontalAlignment="Left"
+                               Margin="7,0,0,0"
+                               Height="25"
+                               Width="25" />
+                        <TextBlock Margin="10,5,5,5"
+                                   Text="Standard"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource Font_ButtonText}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Row="0"
+                        Margin="2"
+                        Visibility="Collapsed"
+                        x:Name="Button_StandardDisabled"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left"
+                        Style="{StaticResource Style_ButtonLayer3_5}"
+                        Click="CLick_Standard">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Height="19"
+                                Width="5"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Background="Transparent"
+                                CornerRadius="2" />
+                        <Image Source="ms-appx:///Assets/Icons/calculate.png"
+                               HorizontalAlignment="Left"
+                               Margin="7,0,0,0"
+                               Height="25"
+                               Width="25" />
+                        <TextBlock Margin="10,5,5,5"
+                                   Text="Standard"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource Font_ButtonText}" />
+                    </StackPanel>
+                </Button>
+
+
+                <Button Grid.Row="1"
+                        Margin="2"
+                        Visibility="Collapsed"
+                        x:Name="Button_CurrencyEnabled"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left"
+                        Style="{StaticResource Style_ButtonLayer5}"
+                        Click="Click_Currency">
+                    <Button.Resources>
+                        <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                        ResourceKey="Brush_Layer6" />
+                        <StaticResource x:Key="ButtonBorderBrushPointerOver"
+                                        ResourceKey="Brush_Layer6" />
+                        <StaticResource x:Key="ButtonBackgroundPressed"
+                                        ResourceKey="Brush_Layer4" />
+                        <StaticResource x:Key="ButtonBorderBrushPressed"
+                                        ResourceKey="Brush_Layer4" />
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Height="19"
+                                Width="5"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Background="{StaticResource Brush_Accent1}"
+                                CornerRadius="2" />
+                        <Image Source="ms-appx:///Assets/Icons/currency.png"
+                               HorizontalAlignment="Left"
+                               Margin="9,0,0,0"
+                               Height="21"
+                               Width="21" />
+                        <TextBlock Margin="12,5,5,5"
+                                   Text="Currency"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource Font_ButtonText}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Row="1"
+                        Margin="2"
+                        Visibility="Visible"
+                        x:Name="Button_CurrencyDisabled"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left"
+                        Style="{StaticResource Style_ButtonLayer3_5}"
+                        Click="Click_Currency">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Height="19"
+                                Width="5"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Background="Transparent"
+                                CornerRadius="2" />
+                        <Image Source="ms-appx:///Assets/Icons/currency.png"
+                               HorizontalAlignment="Left"
+                               Margin="9,0,0,0"
+                               Height="21"
+                               Width="21" />
+                        <TextBlock Margin="12,5,5,5"
+                                   Text="Currency"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource Font_ButtonText}" />
+                    </StackPanel>
+                </Button>
+
+
+                <Button Grid.Row="2"
+                        Margin="2"
+                        Visibility="Collapsed"
+                        x:Name="Button_ErrorMessage"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left"
+                        Style="{StaticResource Style_ButtonLayer3_5}">
+                    <TextBlock Margin="12,0,0,0"
+                               Text="No Internet Connection"
+                               Foreground="Red"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource Font_SelectionButton}" />
+                </Button>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Page>
