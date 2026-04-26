@@ -4,31 +4,27 @@
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
 ![Windows 11](https://img.shields.io/badge/Windows_11_Native-0078D4?style=for-the-badge&logo=windows-11&logoColor=white)
 
-A sleek, feature-rich calculator built from the ground up for Windows 11. Originally a legacy WPF application, this project has been fully ported to **WinUI 3** to leverage modern Fluent Design, Mica backdrops, and hardware-accelerated UI.
+This project focuses on modernizing an already **fully completed WPF calculator app** (located in the `main` branch). The goal of this branch is to port the entire application natively to **WinUI 3** and the Windows 11 Fluent Design.
 
-## ✨ Key Features
+## 📖 Project Background & Vision: WPF to WinUI 3
 
-* **Standard Calculator:** Fully functional arithmetic calculator with a running calculation history.
-* **Live Currency Converter:** Built-in conversion tool supporting major global currencies (EUR, USD, GBP, CZK, JPY, CNY).
-* **Native Windows 11 Look & Feel:** * Implements the **Mica Backdrop** for that beautiful, translucent glass effect.
-  * Follows Microsoft's **Fluent Design System** with smooth animations and rounded corners.
-  * Automatically adapts to the user's **System Accent Color**.
-* **Optimized Architecture:** Uses **Lightweight Styling** and Resource Zones (DRY Principle) to maintain native hover/click animations without bloated ControlTemplates.
+### The Foundation (WPF - Completed)
+The `main` branch holds the original version of the application. It serves as our **stable reference point**. 
+* **Status:** 100% Finished.
+* **Scope:** A fully working calculator with two main modes: a Standard Arithmetic mode and a Currency Converter with real-time logic.
+* **Technology:** Built with Windows Presentation Foundation (WPF). It uses a custom-made navigation system and traditional XAML styling.
+
+### The Goal (WinUI 3 - In Progress)
+The current branch (`feature/winui-port`) is where the transformation happens. The goal is not just to copy the app, but to **re-imagine it for Windows 11**.
+**What I am focusing on:**
+* **Modern Aesthetics:** Replace the old UI with **Fluent Design**. This includes using **Mica Alt** (the beautiful translucent glass effect), rounded corners, and modern typography.
+* **Official Controls:** Moving away from custom WPF workarounds to use native WinUI 3 controls like the **NavigationView**.
 
 ## 📸 Screenshots
-
-*(Insert screenshots of your app here. Show off the Mica effect and the Currency menu!)*
 
 | Standard Mode | Currency Converter | Menu Navigation |
 | :---: | :---: | :---: |
 | <img width="506" height="849" alt="Screenshot 2026-04-23 203123" src="https://github.com/user-attachments/assets/0459b259-1b03-4b51-acfb-62579f9d0bb6" /> | <img width="511" height="850" alt="Screenshot 2026-04-23 203143" src="https://github.com/user-attachments/assets/90c5f175-f320-4562-bf62-1d8b239384c7" /> | <img width="509" height="850" alt="Screenshot 2026-04-23 203134" src="https://github.com/user-attachments/assets/ad0945de-731f-402d-8e4a-a41de50facae" /> |
-
-## 🏗️ Technical Highlights (Why WinUI 3?)
-
-During the migration from WPF to WinUI 3, several architectural improvements were made:
-1. **Lightweight Styling:** Replaced massive WPF `<ControlTemplate>` overrides with localized `<Button.Resources>`. This allows custom theming while preserving native WinUI pointer animations.
-2. **Container Scoping:** Used Grid-level Resource Dictionaries to cascade UI states (Hover, Pressed) to multiple buttons simultaneously, massively reducing XAML code duplication.
-3. **Modern Navigation:** Switched from URI-based navigation to WinUI's robust `Frame.Navigate(typeof(Page))` type-safe approach.
 
 ## 🛠️ How to Run
 
@@ -52,14 +48,3 @@ cd YOUR_REPOSITORY
 # Set the "Calculator.WinUI" project as the Startup Project.
 # Press F5 or Ctrl+F5 to build and run.
 ```
-
-## 🗺️ Roadmap (Next Steps)
-[x] Port legacy WPF logic to WinUI 3.
-
-[x] Implement Fluent Design and Lightweight Styling.
-
-[x] Refactor navigation and UI architecture.
-
-[ ] Responsive Design: Replace hardcoded Width/Height values with dynamic Grid star-sizing (*) to ensure the calculator scales beautifully across all window sizes.
-
-[ ] Add dark mode / light mode toggle switch.
