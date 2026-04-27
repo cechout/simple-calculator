@@ -1,50 +1,36 @@
-# Modern Windows Calculator (WinUI 3 Port) 🧮
+# Modern Windows Calculator (WinUI 3 Port) 
 
-![WinUI 3](https://img.shields.io/badge/WinUI_3-0078D7?style=for-the-badge&logo=windows&logoColor=white)
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![Windows 11](https://img.shields.io/badge/Windows_11_Native-0078D4?style=for-the-badge&logo=windows-11&logoColor=white)
+![WinUI 3](https://img.shields.io/badge/WinUI_3-0078D7?style=for-the-badge&logo=windows&logoColor=white)
 
-This project focuses on modernizing an already **fully completed WPF calculator app** (located in the `main` branch). The goal of this branch is to port the entire application natively to **WinUI 3** and the Windows 11 Fluent Design.
+This project focuses on modernizing an already **fully completed WPF calculator app**. The goal of this branch is to port the entire application natively to **WinUI 3** and the Windows 11 Fluent Design.
 
 ## 📖 Project Background & Vision: WPF to WinUI 3
 
 ### The Foundation (WPF - Completed)
-The `main` branch holds the original version of the application. It serves as our **stable reference point**. 
+The `main` branch holds the original version of the application. It serves as my stable reference point.
 * **Status:** 100% Finished.
-* **Scope:** A fully working calculator with two main modes: a Standard Arithmetic mode and a Currency Converter with real-time logic.
-* **Technology:** Built with Windows Presentation Foundation (WPF). It uses a custom-made navigation system and traditional XAML styling.
+* **Scope:** A working calculator with a Standard Arithmetic mode and a real-time Currency Converter.
+* **Technology:** Built with WPF using a custom navigation system and classic XAML styling.
 
 ### The Goal (WinUI 3 - In Progress)
-The current branch (`feature/winui-port`) is where the transformation happens. The goal is not just to copy the app, but to **re-imagine it for Windows 11**.
-**What I am focusing on:**
-* **Modern Aesthetics:** Replace the old UI with **Fluent Design**. This includes using **Mica Alt** (the beautiful translucent glass effect), rounded corners, and modern typography.
-* **Official Controls:** Moving away from custom WPF workarounds to use native WinUI 3 controls like the **NavigationView**.
+The `feature/winui-port` branch is where the modernization happens. The goal is to make the app look and feel fully native to Windows 11.
+* **WinUI Elements:** Replacing all old UI parts (buttons, fonts, and scrollviewers) with native WinUI elements.
+* **Official Controls:** Moving away from custom WPF workarounds to use native WinUI 3 controls like `NavigationView`.
+* **Modern Look:** Adding modern Windows 11 visuals like Mica glass effects and rounded corners.
 
-## 📸 Screenshots
+## 📸 Screenshots (from finished WPF application)
 
 | Standard Mode | Currency Converter | Menu Navigation |
 | :---: | :---: | :---: |
-| <img width="506" height="849" alt="Screenshot 2026-04-23 203123" src="https://github.com/user-attachments/assets/0459b259-1b03-4b51-acfb-62579f9d0bb6" /> | <img width="511" height="850" alt="Screenshot 2026-04-23 203143" src="https://github.com/user-attachments/assets/90c5f175-f320-4562-bf62-1d8b239384c7" /> | <img width="509" height="850" alt="Screenshot 2026-04-23 203134" src="https://github.com/user-attachments/assets/ad0945de-731f-402d-8e4a-a41de50facae" /> |
+| <img width="462" height="795" alt="Screenshot 2026-04-28 014421" src="https://github.com/user-attachments/assets/cdc25779-2d46-4ee4-a9d4-854a979a3b3f" /> | <img width="462" height="795" alt="Screenshot 2026-04-28 014436" src="https://github.com/user-attachments/assets/6d7a806c-1196-466b-b349-d56b12e0417f" /> | <img width="462" height="795" alt="Screenshot 2026-04-28 014425" src="https://github.com/user-attachments/assets/fbcdc07c-b296-406a-aba9-c49d58334046" /> |
 
 ## 🛠️ How to Run
 
-To build and run this project, you will need Visual Studio and the Windows App SDK.
+To build and run this project, it is highly recommended to use **Visual Studio 2022** (Version 17.0 or later). 
+Before opening the solution, make sure you have the following workloads installed via the **Visual Studio Installer**:
 
-### Prerequisites
-* **Visual Studio 2022** (Version 17.0 or later)
-* Workload: **.NET Desktop Development**
-* Workload: **Windows application development** (Ensure "Windows App SDK C++ Templates" and "Windows App SDK C# Templates" are checked)
+* **.NET Desktop Development**
+* **Windows application development** (Make that the "Windows App SDK C# Templates" are checked in the optional components on the right side).
 
-### Installation
-```bash
-# Clone the repository
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git)
-
-# Navigate into the project folder
-
-cd YOUR_REPOSITORY
-
-# Open the .sln file in Visual Studio 2022
-# Set the "Calculator.WinUI" project as the Startup Project.
-# Press F5 or Ctrl+F5 to build and run.
-```
+Now just set `Calculator_WinUI` as your Startup Project and Press **F5** to build and run the application.
