@@ -283,7 +283,7 @@
             <Button Grid.Row="10"
                     Grid.Column="0"
                     Margin="2"
-                    Style="{StaticResource Style_ButtonLayer6}"
+                    Style="{StaticResource Style_ButtonLayer5}"
                     Click="Click_DecimalPoint">
 
                 <TextBlock Text="."                           
