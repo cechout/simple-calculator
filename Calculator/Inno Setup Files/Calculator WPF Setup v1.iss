@@ -20,7 +20,7 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-OutputDir=C:\Program Files
+OutputDir=.\Output
 OutputBaseFilename=Calculator WPF Setup
 SolidCompression=yes
 WizardStyle=windows11
