@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Modern Windows Calculator (WinUI 3 Port) 
 
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
@@ -34,3 +35,6 @@ Before opening the solution, make sure you have the following workloads installe
 * **Windows application development** (Make that the "Windows App SDK C# Templates" are checked in the optional components on the right side).
 
 Now just set `Calculator_WinUI` as your Startup Project and Press **F5** to build and run the application.
+=======
+
+>>>>>>> winui-skeleton
