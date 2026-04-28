@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# specific folders
+Calculator/InnoSetupFiles/Output
+
 # dotenv files
 .env
 
