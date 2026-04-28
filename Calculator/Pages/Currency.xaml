@@ -60,7 +60,7 @@
                        Grid.Column="0"
                        Grid.ColumnSpan="4"
                        Margin="55, 5, 5, 5"
-                       Text="Menu"                       
+                       Text="Currency"                      
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Style="{StaticResource Font_TextBlockHeader}"/>
