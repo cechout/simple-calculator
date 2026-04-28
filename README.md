@@ -3,21 +3,21 @@
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
 ![WinUI 3](https://img.shields.io/badge/WinUI_3-0078D7?style=for-the-badge&logo=windows&logoColor=white)
 
-This project focuses on modernizing an already **fully completed WPF calculator app**. The goal of this branch is to port the entire application natively to **WinUI 3** and the Windows 11 Fluent Design.
+This project focuses on modernizing an already **fully completed WPF calculator app**. The goal of this is to port the entire application natively to **WinUI 3** and the Windows 11 Fluent Design.
 
 ## 📖 Project Background & Vision: WPF to WinUI 3
 
 ### The Foundation (WPF - Completed)
-The `main` branch holds the original version of the application. It serves as my stable reference point.
-* **Status:** 100% Finished.
-* **Scope:** A working calculator with a Standard Arithmetic mode and a real-time Currency Converter.
-* **Technology:** Built with WPF using a custom navigation system and classic XAML styling.
+The original WPF application is finished and serves as a stable reference point for the entire project.
+* **Status:** Finished (Archived at Tag `v1.0.0`).
+* **Scope:** A simple standard arithmetic calculator and a real-time currency converter.
+* **Design:** Built with WPF using a custom navigation system and classic XAML styling.
 
 ### The Goal (WinUI 3 - In Progress)
-The `feature/winui-port` branch is where the modernization happens. The goal is to make the app look and feel fully native to Windows 11.
+The goal is to make the app look and feel fully native to Windows 11.
 * **WinUI Elements:** Replacing all old UI parts (buttons, fonts, and scrollviewers) with native WinUI elements.
 * **Official Controls:** Moving away from custom WPF workarounds to use native WinUI 3 controls like `NavigationView`.
-* **Modern Look:** Adding modern Windows 11 visuals like Mica glass effects and rounded corners.
+* **Logic Improvements:** I am refactoring the underlying math engine to improve the cumbersome input system and planning to maybe even implement new calculation features.
 
 ## 📸 Screenshots (from finished WPF application)
 
