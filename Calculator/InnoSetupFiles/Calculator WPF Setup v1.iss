@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "Calculator WPF"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Daniel Čech"
 #define MyAppExeName "Calculator.exe"
 
@@ -39,8 +39,8 @@ Source: "C:\Privat\Programmieren\C#\Projekte\WPF Projekte\Calculator\Calculator\
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: C:\Privat\Programmieren\C#\Projekte\WPF Projekte\Calculator\Calculator\Icons\mainicon1.ico
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: C:\Privat\Programmieren\C#\Projekte\WPF Projekte\Calculator\Calculator\Icons\mainicon1.ico
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: C:\Privat\Programmieren\C#\Projekte\WPF Projekte\Calculator\Calculator\Icons\MainIcon\MainIcon_256.ico
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: C:\Privat\Programmieren\C#\Projekte\WPF Projekte\Calculator\Calculator\Icons\MainIcon\MainIcon_256.ico
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
