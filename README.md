@@ -1,10 +1,6 @@
-<img width="2560" height="970" alt="Group 3" src="https://github.com/user-attachments/assets/055a1b49-d3c1-4870-b5f2-ae433d14ba93" />
+<img width="2560" height="810" alt="Frame Draft #5" src="https://github.com/user-attachments/assets/05793a8b-d571-4d64-8b62-5a9defa7722b" />
 
-
-# Simple Calculator (WinUI 3 Port) 
-
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![WinUI 3](https://img.shields.io/badge/WinUI_3-0078D7?style=for-the-badge&logo=windows&logoColor=white)
+###
 
 This project focuses on modernizing an already **fully completed WPF calculator app**. The goal of this is to port the entire application natively to **WinUI 3** and the Windows 11 Fluent Design.
 
