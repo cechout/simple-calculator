@@ -20,6 +20,7 @@ The objective is to make the app look and feel native to Windows 11 while establ
 
 ## 🛠️ How to Run
 
+### 1. Prerequisites
 To build and run this project, it is highly recommended to use **Visual Studio 2022** (Version 17.0 or later). 
 Before opening the solution, make sure you have the following workloads installed via the **Visual Studio Installer**:
 
