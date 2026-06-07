@@ -28,31 +28,6 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!--<Button Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="2"
-                    Height="40"
-                    Width="45"
-                    HorizontalAlignment="Left"
-                    Click="Click_Menu"
-                    Style="{StaticResource Style_ButtonLayer3_5}">
-                <Button.Resources>
-                    <StaticResource x:Key="ButtonBackgroundPointerOver"
-                                    ResourceKey="Brush_Layer4_5" />
-                    <StaticResource x:Key="ButtonBorderBrushPointerOver"
-                                    ResourceKey="Brush_Layer4_5" />
-                    <StaticResource x:Key="ButtonBackgroundPressed"
-                                    ResourceKey="Brush_Layer4" />
-                    <StaticResource x:Key="ButtonBorderBrushPressed"
-                                    ResourceKey="Brush_Layer4" />
-                </Button.Resources>
-                <StackPanel>
-                    <Image Source="ms-appx:///Assets/Icons/menu.png"
-                           Height="25"
-                           Width="25" />
-                </StackPanel>
-            </Button>-->
-
             <TextBlock
                 Grid.Row="0"
                 Grid.ColumnSpan="4"
@@ -75,23 +50,23 @@
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+
                     <TextBlock
-                        x:Name="TextBlock_Calculation"
                         Grid.Row="0"
                         Margin="5,0,5,0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Style="{StaticResource Font_TextBlockOutputDisplay}"
-                        Text="" />
+                        Text="{x:Bind ViewModel.CalculationText, Mode=OneWay}" />
+
                     <TextBlock
-                        x:Name="TextBlock_InputAndResult"
                         Grid.Row="1"
                         Margin="5,0,5,0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         FontSize="50"
                         Style="{StaticResource Font_TextBlockOutputDisplay}"
-                        Text="0" />
+                        Text="{x:Bind ViewModel.InputAndResultText, Mode=OneWay}" />
                 </Grid>
             </ScrollViewer>
 
@@ -123,7 +98,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_BracketLeft"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="("
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="(" />
                 </Button>
@@ -133,7 +109,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_BracketRight"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter=")"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text=")" />
                 </Button>
@@ -143,7 +120,7 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_ClearAllInput"
+                    Command="{x:Bind ViewModel.ClearCommand}"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="CE" />
                 </Button>
@@ -153,7 +130,7 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Backspace"
+                    Command="{x:Bind ViewModel.BackspaceCommand}"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <Image
                         Width="22"
@@ -167,7 +144,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Power1"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="^2"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="^2" />
                 </Button>
@@ -177,7 +155,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="CLick_Power2"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="^"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="^" />
                 </Button>
@@ -187,7 +166,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Root1"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="2√"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="2√" />
                 </Button>
@@ -197,12 +177,12 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Root2"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="√"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="√" />
                 </Button>
             </Grid>
-
 
             <Grid
                 Grid.Row="4"
@@ -232,7 +212,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Seven"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="7"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="7" />
                 </Button>
@@ -242,7 +223,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Eight"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="8"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="8" />
                 </Button>
@@ -252,7 +234,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Nine"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="9"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="9" />
                 </Button>
@@ -263,7 +246,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Four"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="4"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="4" />
                 </Button>
@@ -273,7 +257,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Five"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="5"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="5" />
                 </Button>
@@ -283,7 +268,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Six"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="6"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="6" />
                 </Button>
@@ -294,7 +280,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_One"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="1"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="1" />
                 </Button>
@@ -304,7 +291,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Two"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="2"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="2" />
                 </Button>
@@ -314,7 +302,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Three"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="3"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="3" />
                 </Button>
@@ -325,7 +314,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_DecimalPoint"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="."
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="." />
                 </Button>
@@ -335,7 +325,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Zero"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="0"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="0" />
                 </Button>
@@ -345,12 +336,12 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Add"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="+"
                     Style="{StaticResource Style_ButtonLayer6}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="+" />
                 </Button>
             </Grid>
-
 
             <Grid
                 Grid.Row="4"
@@ -376,7 +367,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Divide"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="/"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="/" />
                 </Button>
@@ -385,7 +377,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Multiply"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="*"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="*" />
                 </Button>
@@ -394,7 +387,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="Click_Subtract"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="-"
                     Style="{StaticResource Style_ButtonLayer5}">
                     <TextBlock Style="{StaticResource Font_ButtonSign}" Text="-" />
                 </Button>
@@ -406,11 +400,10 @@
                 Margin="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Click="Click_Calculate"
+                Command="{x:Bind ViewModel.CalculateCommand}"
                 Style="{StaticResource Style_ButtonAccent1}">
                 <TextBlock Style="{StaticResource Font_ButtonSign}" Text="=" />
             </Button>
-
         </Grid>
     </Border>
 </Page>
