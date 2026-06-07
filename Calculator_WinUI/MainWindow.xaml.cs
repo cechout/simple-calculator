@@ -1,5 +1,6 @@
+using Calculator_WinUI.Views; 
 using Microsoft.UI.Xaml;
-using Calculator_WinUI.Pages; // WICHTIG: Damit er die Standard-Klasse findet!
+using Microsoft.UI.Xaml.Controls;
 
 namespace Calculator_WinUI
 {
@@ -9,8 +10,23 @@ namespace Calculator_WinUI
         {
             this.InitializeComponent();
 
-            // Sagt dem Frame, dass er direkt beim Start die Standard-Seite laden soll
-            MainFrame.Navigate(typeof(Standard));
+            MainFrame.Navigate(typeof(StandardPage));
+            NavView.SelectedItem = NavView.MenuItems[0];
+        }
+
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            string itemTag = args.InvokedItemContainer.Tag.ToString();
+
+            switch (itemTag)
+            {
+                case "Standard":
+                    MainFrame.Navigate(typeof(StandardPage));
+                    break;
+                case "Currency":
+                    MainFrame.Navigate(typeof(CurrencyPage));
+                    break;
+            }
         }
     }
 }

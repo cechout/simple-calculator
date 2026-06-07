@@ -14,7 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Calculator_WinUI.Pages;
+using Calculator_WinUI.Views;
 
 namespace Calculator_WinUI.Views
 {
@@ -65,7 +65,7 @@ namespace Calculator_WinUI.Views
                 //this.NavigationService.Navigate(pageFunctionUri);
 
                 // WinUI Navigation
-                this.Frame.Navigate(typeof(Menu));
+                //this.Frame.Navigate(typeof(Menu));
             }
         }
 
@@ -85,7 +85,7 @@ namespace Calculator_WinUI.Views
             //this.NavigationService.Navigate(pageFunctionUri);
 
             // WinUI Navigation
-            this.Frame.Navigate(typeof(Menu));
+            //this.Frame.Navigate(typeof(Menu));
         }
 
         //Selection Borders
