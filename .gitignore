@@ -5,6 +5,7 @@
 
 # specific folders
 Calculator/InnoSetupFiles/Output
+Figma
 
 # dotenv files
 .env

@@ -120,21 +120,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\GeneralIcons\backspace.png" />
-    <Resource Include="Icons\GeneralIcons\calculate.png" />
-    <Resource Include="Icons\GeneralIcons\currency.png" />
+    <Resource Include="Icons\backspace.png" />
+    <Resource Include="Icons\calculate.png" />
+    <Resource Include="Icons\currency.png" />
     <Resource Include="Icons\MainIcon\Old_MainIcon_96.png" />
     <Resource Include="Icons\MainIcon\Old_MainIcon.ico" />
-    <Resource Include="Icons\GeneralIcons\menu.png" />
-    <Resource Include="Icons\GeneralIcons\synchrosize.png" />
+    <Resource Include="Icons\menu.png" />
+    <Resource Include="Icons\synchrosize.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\MainIcon\MainIcon_256.png" />
-    <Resource Include="Icons\MainIcon\MainIcon_96.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\MainIcon\MainIcon_256.ico" />
-    <Resource Include="Icons\MainIcon\MainIcon_96.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\MainIcon\MainIcon_96.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

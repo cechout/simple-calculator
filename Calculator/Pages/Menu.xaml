@@ -36,7 +36,7 @@
                     Style="{DynamicResource Style_ButtonLayer3_5}">
 
                 <StackPanel>
-                    <Image Source="/Icons/GeneralIcons/menu.png"
+                    <Image Source="/Icons/menu.png"
                            Height="25"
                            Width="25" />
                 </StackPanel>
@@ -71,7 +71,7 @@
                             Background="{StaticResource Brush_Accent1}"
                             CornerRadius="2" />
 
-                    <Image Source="/Icons/GeneralIcons/calculate.png"
+                    <Image Source="/Icons/calculate.png"
                            HorizontalAlignment="Left"
                            Margin="7, 0, 0, 0"
                            Height="25"
@@ -165,7 +165,7 @@
                             Background="Transparent"
                             CornerRadius="2" />
 
-                    <Image Source="/Icons/GeneralIcons/currency.png"
+                    <Image Source="/Icons/currency.png"
                            HorizontalAlignment="Left"
                            Margin="9, 0, 0, 0"
                            Height="21"

@@ -49,7 +49,7 @@
                     Click="MenuClick">
 
                 <StackPanel>
-                    <Image Source="/Icons/GeneralIcons/menu.png"
+                    <Image Source="/Icons/menu.png"
                            Height="25"
                            Width="25" />
                 </StackPanel>
@@ -134,11 +134,10 @@
                 <TextBlock Margin="5, -3, 5, 0"
                            x:Name="TextBlock_Currency2"
                            Text="0"
-                           FontWeight="DemiBold"
-                           FontFamily="Montserrat"
                            Foreground="White"
                            FontSize="38"
-                           HorizontalAlignment="Right"/>
+                           HorizontalAlignment="Right"
+                           Style="{StaticResource Font_TextBlockOutputDisplay}" />
             </ScrollViewer>
 
             <!--Conversion Number-->
@@ -166,7 +165,7 @@
 
                 <Image Height="22"
                        Width="22"
-                       Source="/Icons/GeneralIcons/synchrosize.png" />
+                       Source="/Icons/synchrosize.png" />
             </Button>
 
             <Button Grid.Row="6"
@@ -187,7 +186,7 @@
 
                 <Image Height="22"
                        Width="22"
-                       Source="/Icons/GeneralIcons/backspace.png" />
+                       Source="/Icons/backspace.png" />
             </Button>
 
             <Button Grid.Row="7"
