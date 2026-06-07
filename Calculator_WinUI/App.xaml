@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application
     x:Class="Calculator_WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Calculator_WinUI">
-    
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Other merged dictionaries here -->
+                <!--  Other merged dictionaries here  -->
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- color palette -->
-            <!--dark-->
+            <!--  color palette  -->
+            <!--  dark  -->
             <SolidColorBrush x:Key="Brush_Layer1" Color="#0c0c0c" />
             <SolidColorBrush x:Key="Brush_Layer2" Color="#161616" />
             <SolidColorBrush x:Key="Brush_Layer3" Color="#202020" />
@@ -28,199 +28,136 @@
             <SolidColorBrush x:Key="Brush_Layer9" Color="#5c5c5c" />
             <SolidColorBrush x:Key="Brush_Layer10" Color="#666666" />
 
-            <!--accent1-->
+            <!--  accent1  -->
             <SolidColorBrush x:Key="Brush_Accent1Dark" Color="#0081d6" />
             <SolidColorBrush x:Key="Brush_Accent1" Color="#0091e6" />
             <SolidColorBrush x:Key="Brush_Accent1Light" Color="#15a6fb" />
 
-            <!--accent2-->
+            <!--  accent2  -->
             <SolidColorBrush x:Key="Brush_Accent2Dark" Color="#00a843" />
             <SolidColorBrush x:Key="Brush_Accent2" Color="#00c853" />
             <SolidColorBrush x:Key="Brush_Accent2Light" Color="#15dd68" />
 
-            <!--accent3-->
+            <!--  accent3  -->
             <SolidColorBrush x:Key="Brush_Accent3Dark" Color="#c32f1f" />
             <SolidColorBrush x:Key="Brush_Accent3" Color="#d32f2f" />
             <SolidColorBrush x:Key="Brush_Accent3Light" Color="#e84444" />
 
-            
-            <!--fonts-->
-            <!--button text-->
-            <Style x:Key="Font_ButtonText"
-                   TargetType="TextBlock">
-                <Setter Property="FontSize"
-                        Value="14" />
-                <Setter Property="FontWeight"
-                        Value="Normal" />
-                <Setter Property="Foreground"
-                        Value="#fefefe" />
+
+            <!--  fonts  -->
+            <!--  button text  -->
+            <Style x:Key="Font_ButtonText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="Foreground" Value="#fefefe" />
             </Style>
 
-            <!--button sign-->
-            <Style x:Key="Font_ButtonSign"
-                   TargetType="TextBlock">
-                <Setter Property="FontSize"
-                        Value="18" />
-                <Setter Property="FontWeight"
-                        Value="SemiBold" />
-                <Setter Property="Foreground"
-                        Value="#fefefe" />
+            <!--  button sign  -->
+            <Style x:Key="Font_ButtonSign" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="#fefefe" />
             </Style>
 
-            <!--textblock header-->
-            <Style x:Key="Font_TextBlockHeader"
-                   TargetType="TextBlock">
-                <Setter Property="FontSize"
-                        Value="20" />
-                <Setter Property="FontWeight"
-                        Value="SemiBold" />
-                <Setter Property="Foreground"
-                        Value="#fefefe" />
+            <!--  textblock header  -->
+            <Style x:Key="Font_TextBlockHeader" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="#fefefe" />
             </Style>
 
-            <!--textblock output display-->
-            <Style x:Key="Font_TextBlockOutputDisplay"
-                   TargetType="TextBlock">
-                <Setter Property="FontSize"
-                        Value="14" />
-                <Setter Property="FontWeight"
-                        Value="SemiBold" />
-                <Setter Property="Foreground"
-                        Value="#b3b3b3" />
+            <!--  textblock output display  -->
+            <Style x:Key="Font_TextBlockOutputDisplay" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="#b3b3b3" />
             </Style>
 
-            <!--selection button-->
-            <Style x:Key="Font_SelectionButton"
-                   TargetType="TextBlock">
-                <Setter Property="FontSize"
-                        Value="14" />
-                <Setter Property="FontWeight"
-                        Value="Normal" />
+            <!--  selection button  -->
+            <Style x:Key="Font_SelectionButton" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="Normal" />
             </Style>
 
-            <!--selection border button-->
-            <Style x:Key="Font_SelectionBorderButton"
-                   TargetType="TextBlock">
-                <Setter Property="FontSize"
-                        Value="14" />
-                <Setter Property="FontWeight"
-                        Value="Normal" />
-                <Setter Property="Foreground"
-                        Value="#fefefe" />
-            </Style>
-            
-            
-            <!--button styles-->
-            <!--accent1-->
-            <Style x:Key="Style_ButtonAccent1"
-                   TargetType="Button"
-                   BasedOn="{StaticResource AccentButtonStyle}">
-                <Setter Property="CornerRadius"
-                        Value="6" />
+            <!--  selection border button  -->
+            <Style x:Key="Font_SelectionBorderButton" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="Foreground" Value="#fefefe" />
             </Style>
 
-            <!--accent2-->
-            <Style x:Key="Style_ButtonAccent2"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Accent2}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+
+            <!--  button styles  -->
+            <!--  accent1  -->
+            <Style
+                x:Key="Style_ButtonAccent1"
+                BasedOn="{StaticResource AccentButtonStyle}"
+                TargetType="Button">
+                <Setter Property="CornerRadius" Value="6" />
             </Style>
 
-            <!--accent3-->
-            <Style x:Key="Style_ButtonAccent3"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Accent3}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  accent2  -->
+            <Style x:Key="Style_ButtonAccent2" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Accent2}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <!--layer6-->
-            <Style x:Key="Style_ButtonLayer6"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Layer6}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  accent3  -->
+            <Style x:Key="Style_ButtonAccent3" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Accent3}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <!--layer5-->
-            <Style x:Key="Style_ButtonLayer5"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Layer5}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  layer6  -->
+            <Style x:Key="Style_ButtonLayer6" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Layer6}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <!--layer4_5-->
-            <Style x:Key="Style_ButtonLayer4_5"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Layer4}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  layer5  -->
+            <Style x:Key="Style_ButtonLayer5" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Layer5}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <!--layer4-->
-            <Style x:Key="Style_ButtonLayer4"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Layer4}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  layer4_5  -->
+            <Style x:Key="Style_ButtonLayer4_5" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Layer4}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <!--layer3_5-->
-            <Style x:Key="Style_ButtonLayer3_5"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Layer3}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  layer4  -->
+            <Style x:Key="Style_ButtonLayer4" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Layer4}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <!--layer3-->
-            <Style x:Key="Style_ButtonLayer3"
-                   TargetType="Button">
-                <Setter Property="Background"
-                        Value="{StaticResource Brush_Layer3}" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="CornerRadius"
-                        Value="6" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
+            <!--  layer3_5  -->
+            <Style x:Key="Style_ButtonLayer3_5" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Layer3}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+
+            <!--  layer3  -->
+            <Style x:Key="Style_ButtonLayer3" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Brush_Layer3}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
         </ResourceDictionary>

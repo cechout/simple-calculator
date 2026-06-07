@@ -15,14 +15,14 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Calculator_WinUI.Pages;
 
-namespace Calculator_WinUI.Pages
+namespace Calculator_WinUI.Views
 {
-    public sealed partial class Standard : Page
+    public sealed partial class StandardPage : Page
     {
         Calculate Calculate1 = new Calculate();
 
         //Constructor
-        public Standard()
+        public StandardPage()
         {
             InitializeComponent();
 

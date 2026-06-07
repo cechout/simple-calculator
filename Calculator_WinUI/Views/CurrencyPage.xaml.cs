@@ -16,9 +16,9 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Calculator_WinUI.Pages;
 
-namespace Calculator_WinUI.Pages
+namespace Calculator_WinUI.Views
 {
-    public sealed partial class Currency : Page
+    public sealed partial class CurrencyPage : Page
     {
         ConvertCurrency ConvertCurrency1;
 
@@ -26,7 +26,7 @@ namespace Calculator_WinUI.Pages
         private EnumCurrency Currency2;
 
         //Constructor
-        public Currency()
+        public CurrencyPage()
         {
             InitializeComponent();
 

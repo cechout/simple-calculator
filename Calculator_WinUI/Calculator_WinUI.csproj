@@ -14,9 +14,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Pages\Currency.xaml" />
-    <None Remove="Pages\Menu.xaml" />
-    <None Remove="Pages\Standard.xaml" />
+    <None Remove="Views\Currency.xaml" />
+    <None Remove="Views\Menu.xaml" />
+    <None Remove="Views\Standard.xaml" />
   </ItemGroup>
 
   <ItemGroup>

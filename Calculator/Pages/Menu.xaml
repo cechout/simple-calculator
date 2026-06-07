@@ -1,22 +1,24 @@
-﻿<Page x:Class="Calculator.Pages.Menu"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Calculator.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="300"
-      Title="Menu">
+﻿<Page
+    x:Class="Calculator.Pages.Menu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Calculator.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Menu"
+    d:DesignHeight="500"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
 
     <Border Background="{StaticResource Brush_Layer3}">
         <Grid Margin="5">
             <Grid.RowDefinitions>
 
-                <!--Header-->
+                <!--  Header  -->
                 <RowDefinition Height="50" />
                 <RowDefinition Height="20" />
 
-                <!--Navigation Buttons-->
+                <!--  Navigation Buttons  -->
                 <RowDefinition Height="43" />
                 <RowDefinition Height="43" />
                 <RowDefinition Height="30" />
@@ -24,176 +26,197 @@
 
             </Grid.RowDefinitions>
 
-            <!--Header-->
-            <!--Menu Button-->
-            <Button Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="2"
-                    Height="40"
-                    Width="45"
-                    HorizontalAlignment="Left"
-                    Click="Click_Menu"
-                    Style="{DynamicResource Style_ButtonLayer3_5}">
+            <!--  Header  -->
+            <!--  Menu Button  -->
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Width="45"
+                Height="40"
+                Margin="2"
+                HorizontalAlignment="Left"
+                Click="Click_Menu"
+                Style="{DynamicResource Style_ButtonLayer3_5}">
 
                 <StackPanel>
-                    <Image Source="/Icons/menu.png"
-                           Height="25"
-                           Width="25" />
+                    <Image
+                        Width="25"
+                        Height="25"
+                        Source="/Icons/menu.png" />
                 </StackPanel>
             </Button>
 
-            <!--Title-->
-            <TextBlock Grid.Row="0"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="4"
-                       Margin="55, 5, 5, 5"
-                       Text="Menu"                       
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Style="{StaticResource Font_TextBlockHeader}"/>
+            <!--  Title  -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Margin="55,5,5,5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Style="{StaticResource Font_TextBlockHeader}"
+                Text="Menu" />
 
-            <!--Navigation Buttons-->
-            <!--Standard-->
-            <Button Grid.Row="2"
-                    Grid.Column="0"
-                    Margin="2"
-                    Visibility="Visible"
-                    x:Name="Button_StandardEnabled"
-                    HorizontalContentAlignment="Left"
-                    Style="{StaticResource Style_ButtonLayer5}"
-                    Click="CLick_Standard">
+            <!--  Navigation Buttons  -->
+            <!--  Standard  -->
+            <Button
+                x:Name="Button_StandardEnabled"
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="2"
+                HorizontalContentAlignment="Left"
+                Click="CLick_Standard"
+                Style="{StaticResource Style_ButtonLayer5}"
+                Visibility="Visible">
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Height="19"
-                            Width="5"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Background="{StaticResource Brush_Accent1}"
-                            CornerRadius="2" />
+                    <Border
+                        Width="5"
+                        Height="19"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="{StaticResource Brush_Accent1}"
+                        CornerRadius="2" />
 
-                    <Image Source="/Icons/calculate.png"
-                           HorizontalAlignment="Left"
-                           Margin="7, 0, 0, 0"
-                           Height="25"
-                           Width="25" />
+                    <Image
+                        Width="25"
+                        Height="25"
+                        Margin="7,0,0,0"
+                        HorizontalAlignment="Left"
+                        Source="/Icons/calculate.png" />
 
-                    <TextBlock Margin="10, 5, 5, 5"
-                               Text="Standard"                       
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource Font_ButtonText}"/>
+                    <TextBlock
+                        Margin="10,5,5,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource Font_ButtonText}"
+                        Text="Standard" />
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="2"
-                    Grid.Column="0"
-                    Margin="2"
-                    Visibility="Collapsed"
-                    x:Name="Button_StandardDisabled"
-                    HorizontalContentAlignment="Left"
-                    Style="{StaticResource Style_ButtonLayer3_5}"
-                    Click="CLick_Standard">
+            <Button
+                x:Name="Button_StandardDisabled"
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="2"
+                HorizontalContentAlignment="Left"
+                Click="CLick_Standard"
+                Style="{StaticResource Style_ButtonLayer3_5}"
+                Visibility="Collapsed">
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Height="19"
-                            Width="5"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Background="Transparent"
-                            CornerRadius="2" />
+                    <Border
+                        Width="5"
+                        Height="19"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        CornerRadius="2" />
 
-                    <Image Source="/Icons/calculate.png"
-                           HorizontalAlignment="Left"
-                           Margin="7, 0, 0, 0"
-                           Height="25"
-                           Width="25" />
+                    <Image
+                        Width="25"
+                        Height="25"
+                        Margin="7,0,0,0"
+                        HorizontalAlignment="Left"
+                        Source="/Icons/calculate.png" />
 
-                    <TextBlock Margin="10, 5, 5, 5"
-                               Text="Standard"                       
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource Font_ButtonText}"/>
+                    <TextBlock
+                        Margin="10,5,5,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource Font_ButtonText}"
+                        Text="Standard" />
                 </StackPanel>
             </Button>
 
-            <!--Currency-->
-            <Button Grid.Row="3"
-                    Grid.Column="0"
-                    Margin="2"
-                    Visibility="Collapsed"
-                    x:Name="Button_CurrencyEnabled"
-                    HorizontalContentAlignment="Left"
-                    Style="{StaticResource Style_ButtonLayer5}"
-                    Click="Click_Currency">
+            <!--  Currency  -->
+            <Button
+                x:Name="Button_CurrencyEnabled"
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="2"
+                HorizontalContentAlignment="Left"
+                Click="Click_Currency"
+                Style="{StaticResource Style_ButtonLayer5}"
+                Visibility="Collapsed">
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Height="19"
-                            Width="5"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Background="{StaticResource Brush_Accent1}"
-                            CornerRadius="2" />
+                    <Border
+                        Width="5"
+                        Height="19"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="{StaticResource Brush_Accent1}"
+                        CornerRadius="2" />
 
-                    <Image Source="/Icons/currency.png"
-                           HorizontalAlignment="Left"
-                           Margin="9, 0, 0, 0"
-                           Height="21"
-                           Width="21" />
+                    <Image
+                        Width="21"
+                        Height="21"
+                        Margin="9,0,0,0"
+                        HorizontalAlignment="Left"
+                        Source="/Icons/currency.png" />
 
-                    <TextBlock Margin="12, 5, 5, 5"
-                               Text="Currency"                       
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource Font_ButtonText}"/>
+                    <TextBlock
+                        Margin="12,5,5,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource Font_ButtonText}"
+                        Text="Currency" />
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="3"
-                    Grid.Column="0"
-                    Margin="2"
-                    Visibility="Visible"
-                    x:Name="Button_CurrencyDisabled"
-                    HorizontalContentAlignment="Left"
-                    Style="{StaticResource Style_ButtonLayer3_5}"
-                    Click="Click_Currency">
+            <Button
+                x:Name="Button_CurrencyDisabled"
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="2"
+                HorizontalContentAlignment="Left"
+                Click="Click_Currency"
+                Style="{StaticResource Style_ButtonLayer3_5}"
+                Visibility="Visible">
 
                 <StackPanel Orientation="Horizontal">
-                    <Border Height="19"
-                            Width="5"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Background="Transparent"
-                            CornerRadius="2" />
+                    <Border
+                        Width="5"
+                        Height="19"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        CornerRadius="2" />
 
-                    <Image Source="/Icons/currency.png"
-                           HorizontalAlignment="Left"
-                           Margin="9, 0, 0, 0"
-                           Height="21"
-                           Width="21" />
+                    <Image
+                        Width="21"
+                        Height="21"
+                        Margin="9,0,0,0"
+                        HorizontalAlignment="Left"
+                        Source="/Icons/currency.png" />
 
-                    <TextBlock Margin="12, 5, 5, 5"
-                               Text="Currency"                       
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource Font_ButtonText}"/>
+                    <TextBlock
+                        Margin="12,5,5,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource Font_ButtonText}"
+                        Text="Currency" />
                 </StackPanel>
             </Button>
 
-            <!--Error Button-->
-            <Button Grid.Row="4"
-                    Margin="2"
-                    Visibility="Collapsed"
-                    x:Name="Button_ErrorMessage"
-                    HorizontalContentAlignment="Left"
-                    Style="{StaticResource Style_ButtonLayer3_5}">
+            <!--  Error Button  -->
+            <Button
+                x:Name="Button_ErrorMessage"
+                Grid.Row="4"
+                Margin="2"
+                HorizontalContentAlignment="Left"
+                Style="{StaticResource Style_ButtonLayer3_5}"
+                Visibility="Collapsed">
 
-                <TextBlock Grid.Row="0"
-                           Margin="12, 0, 0, 0"
-                           Text="No Internet Connection"
-                           Foreground="Red"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Style="{StaticResource Font_SelectionButton}"/>
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="12,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Foreground="Red"
+                    Style="{StaticResource Font_SelectionButton}"
+                    Text="No Internet Connection" />
             </Button>
         </Grid>
     </Border>
