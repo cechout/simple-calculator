@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Xml;
 
-namespace Calculator_WinUI.Classes
+namespace Calculator_WinUI.Models
 {
     class GetCurrencyData
     {

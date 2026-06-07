@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculator_WinUI.Classes
+namespace Calculator_WinUI.Models
 {
     class ConvertCurrency
     {
