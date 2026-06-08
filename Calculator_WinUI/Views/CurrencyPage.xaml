@@ -84,14 +84,23 @@
                 Foreground="{ThemeResource TextFillColorSecondaryBrush}">
 
                 <DropDownButton.Flyout>
-                    <Flyout Placement="BottomEdgeAlignedRight">
+                    <Flyout
+                        x:Name="FlyoutCurrency1"
+                        Placement="BottomEdgeAlignedRight"
+                        ShouldConstrainToRootBounds="False">
 
                         <Flyout.FlyoutPresenterStyle>
                             <Style TargetType="FlyoutPresenter">
                                 <Setter Property="MaxWidth" Value="250" />
-                                <Setter Property="MaxHeight" Value="350" />
+                                <Setter Property="MaxHeight" Value="450" />
                                 <Setter Property="Padding" Value="0" />
                                 <Setter Property="CornerRadius" Value="8" />
+
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TranslateTransform Y="-200" />
+                                    </Setter.Value>
+                                </Setter>
                             </Style>
                         </Flyout.FlyoutPresenterStyle>
 
@@ -99,6 +108,7 @@
                             DisplayMemberPath="DisplayName"
                             ItemsSource="{x:Bind ViewModel.AvailableCurrencies}"
                             SelectedItem="{x:Bind ViewModel.SelectedCurrency1, Mode=TwoWay}"
+                            SelectionChanged="ListView1_SelectionChanged"
                             SelectionMode="Single" />
 
                     </Flyout>
@@ -140,14 +150,23 @@
                 Foreground="{ThemeResource TextFillColorSecondaryBrush}">
 
                 <DropDownButton.Flyout>
-                    <Flyout Placement="BottomEdgeAlignedRight">
+                    <Flyout
+                        x:Name="FlyoutCurrency2"
+                        Placement="BottomEdgeAlignedRight"
+                        ShouldConstrainToRootBounds="False">
 
                         <Flyout.FlyoutPresenterStyle>
                             <Style TargetType="FlyoutPresenter">
                                 <Setter Property="MaxWidth" Value="250" />
-                                <Setter Property="MaxHeight" Value="350" />
+                                <Setter Property="MaxHeight" Value="450" />
                                 <Setter Property="Padding" Value="0" />
                                 <Setter Property="CornerRadius" Value="8" />
+
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TranslateTransform Y="-200" />
+                                    </Setter.Value>
+                                </Setter>
                             </Style>
                         </Flyout.FlyoutPresenterStyle>
 
@@ -155,6 +174,7 @@
                             DisplayMemberPath="DisplayName"
                             ItemsSource="{x:Bind ViewModel.AvailableCurrencies}"
                             SelectedItem="{x:Bind ViewModel.SelectedCurrency2, Mode=TwoWay}"
+                            SelectionChanged="ListView2_SelectionChanged"
                             SelectionMode="Single" />
 
                     </Flyout>
