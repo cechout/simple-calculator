@@ -9,155 +9,177 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!--  Other merged dictionaries here  -->
             </ResourceDictionary.MergedDictionaries>
 
-            <!--  color palette  -->
-            <!--  dark  -->
-            <SolidColorBrush x:Key="Brush_Layer1" Color="#0c0c0c" />
-            <SolidColorBrush x:Key="Brush_Layer2" Color="#161616" />
-            <SolidColorBrush x:Key="Brush_Layer3" Color="#202020" />
-            <SolidColorBrush x:Key="Brush_Layer3_5" Color="#252525" />
-            <SolidColorBrush x:Key="Brush_Layer4" Color="#2a2a2a" />
-            <SolidColorBrush x:Key="Brush_Layer4_5" Color="#2f2f2f" />
-            <SolidColorBrush x:Key="Brush_Layer5" Color="#343434" />
-            <SolidColorBrush x:Key="Brush_Layer5_5" Color="#393939" />
-            <SolidColorBrush x:Key="Brush_Layer6" Color="#3e3e3e" />
-            <SolidColorBrush x:Key="Brush_Layer7" Color="#484848" />
-            <SolidColorBrush x:Key="Brush_Layer8" Color="#525252" />
-            <SolidColorBrush x:Key="Brush_Layer9" Color="#5c5c5c" />
-            <SolidColorBrush x:Key="Brush_Layer10" Color="#666666" />
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <!--  fill colors  -->
+                    <!--  number pad  -->
+                    <SolidColorBrush x:Key="NumPadNormal" Color="#1FFFFFFF" />
+                    <SolidColorBrush x:Key="NumPadHover" Color="#14FFFFFF" />
+                    <SolidColorBrush x:Key="NumPadPressed" Color="#0AFFFFFF" />
 
-            <!--  accent1  -->
-            <SolidColorBrush x:Key="Brush_Accent1Dark" Color="#0081d6" />
-            <SolidColorBrush x:Key="Brush_Accent1" Color="#0091e6" />
-            <SolidColorBrush x:Key="Brush_Accent1Light" Color="#15a6fb" />
+                    <!--  operator button  -->
+                    <SolidColorBrush x:Key="OpNormal" Color="#14FFFFFF" />
+                    <SolidColorBrush x:Key="OpHover" Color="#24FFFFFF" />
+                    <SolidColorBrush x:Key="OpPressed" Color="#14FFFFFF" />
 
-            <!--  accent2  -->
-            <SolidColorBrush x:Key="Brush_Accent2Dark" Color="#00a843" />
-            <SolidColorBrush x:Key="Brush_Accent2" Color="#00c853" />
-            <SolidColorBrush x:Key="Brush_Accent2Light" Color="#15dd68" />
+                    <!--  border colors  -->
+                    <!--  number pad  -->
+                    <LinearGradientBrush x:Key="NumPadBorder" StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="#25FFFFFF" />
+                        <GradientStop Offset="1.0" Color="#14FFFFFF" />
+                    </LinearGradientBrush>
+                    <SolidColorBrush x:Key="NumPadBorderPressed" Color="#14FFFFFF" />
 
-            <!--  accent3  -->
-            <SolidColorBrush x:Key="Brush_Accent3Dark" Color="#c32f1f" />
-            <SolidColorBrush x:Key="Brush_Accent3" Color="#d32f2f" />
-            <SolidColorBrush x:Key="Brush_Accent3Light" Color="#e84444" />
+                    <!--  operator button  -->
+                    <LinearGradientBrush x:Key="OpBorder" StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="#1CFFFFFF" />
+                        <GradientStop Offset="1.0" Color="#17FFFFFF" />
+                    </LinearGradientBrush>
+                    <SolidColorBrush x:Key="OpBorderPressed" Color="#1CFFFFFF" />
+                </ResourceDictionary>
 
+                <ResourceDictionary x:Key="Light">
+                    <!--  number pad colors  -->
+                    <SolidColorBrush x:Key="NumPadNormal" Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="NumPadHover" Color="#F0F0F0FF" />
+                    <SolidColorBrush x:Key="NumPadPressed" Color="#E0E0E0FF" />
 
-            <!--  fonts  -->
-            <!--  button text  -->
-            <Style x:Key="Font_ButtonText" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontWeight" Value="Normal" />
-                <Setter Property="Foreground" Value="#fefefe" />
+                    <!--  operator button colors  -->
+                    <SolidColorBrush x:Key="OpNormal" Color="#F9F9F9FF" />
+                    <SolidColorBrush x:Key="OpHover" Color="#EAEAEAFF" />
+                    <SolidColorBrush x:Key="OpPressed" Color="#DBDBDBFF" />
+
+                    <SolidColorBrush x:Key="NumPadBorder" Color="#EAEAEA" />
+                    <SolidColorBrush x:Key="OpBorder" Color="#D1D1D1" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <!--  Number Pad Button Style  -->
+            <Style x:Key="NumberPadButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource NumPadNormal}" />
+                <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+
+                <Setter Property="BorderBrush" Value="{ThemeResource NumPadBorder}" />
+                <Setter Property="BorderThickness" Value="1,1,1,1" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid
+                                x:Name="RootGrid"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                                <ContentPresenter
+                                    x:Name="ContentPresenter"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding Content}" />
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+
+                                        <VisualState x:Name="Normal" />
+
+                                        <VisualState x:Name="PointerOver">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NumPadHover}" />
+                                                </ObjectAnimationUsingKeyFrames>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource OpBorder}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NumPadPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="ContentPresenter"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="0.7"
+                                                    Duration="0" />
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NumPadBorderPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
-            <!--  button sign  -->
-            <Style x:Key="Font_ButtonSign" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="FontWeight" Value="SemiBold" />
-                <Setter Property="Foreground" Value="#fefefe" />
-            </Style>
+            <!--  Operator Button Style  -->
+            <Style x:Key="OperatorButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource OpNormal}" />
+                <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
 
-            <!--  textblock header  -->
-            <Style x:Key="Font_TextBlockHeader" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontWeight" Value="SemiBold" />
-                <Setter Property="Foreground" Value="#fefefe" />
-            </Style>
+                <Setter Property="BorderBrush" Value="{ThemeResource OpBorder}" />
+                <Setter Property="BorderThickness" Value="1,1,1,1" />
 
-            <!--  textblock output display  -->
-            <Style x:Key="Font_TextBlockOutputDisplay" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontWeight" Value="SemiBold" />
-                <Setter Property="Foreground" Value="#b3b3b3" />
-            </Style>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid
+                                x:Name="RootGrid"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                                <ContentPresenter
+                                    x:Name="ContentPresenter"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding Content}" />
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
 
-            <!--  selection button  -->
-            <Style x:Key="Font_SelectionButton" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontWeight" Value="Normal" />
-            </Style>
+                                        <VisualState x:Name="Normal" />
 
-            <!--  selection border button  -->
-            <Style x:Key="Font_SelectionBorderButton" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontWeight" Value="Normal" />
-                <Setter Property="Foreground" Value="#fefefe" />
-            </Style>
+                                        <VisualState x:Name="PointerOver">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource OpHover}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
 
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource OpPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
 
-            <!--  button styles  -->
-            <!--  accent1  -->
-            <Style
-                x:Key="Style_ButtonAccent1"
-                BasedOn="{StaticResource AccentButtonStyle}"
-                TargetType="Button">
-                <Setter Property="CornerRadius" Value="6" />
-            </Style>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="ContentPresenter"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="0.7"
+                                                    Duration="0" />
 
-            <!--  accent2  -->
-            <Style x:Key="Style_ButtonAccent2" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Accent2}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource OpBorderPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
 
-            <!--  accent3  -->
-            <Style x:Key="Style_ButtonAccent3" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Accent3}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-
-            <!--  layer6  -->
-            <Style x:Key="Style_ButtonLayer6" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Layer6}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-
-            <!--  layer5  -->
-            <Style x:Key="Style_ButtonLayer5" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Layer5}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-
-            <!--  layer4_5  -->
-            <Style x:Key="Style_ButtonLayer4_5" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Layer4}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-
-            <!--  layer4  -->
-            <Style x:Key="Style_ButtonLayer4" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Layer4}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-
-            <!--  layer3_5  -->
-            <Style x:Key="Style_ButtonLayer3_5" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Layer3}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-
-            <!--  layer3  -->
-            <Style x:Key="Style_ButtonLayer3" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource Brush_Layer3}" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="CornerRadius" Value="6" />
-                <Setter Property="BorderThickness" Value="0" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
         </ResourceDictionary>

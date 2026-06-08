@@ -15,6 +15,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Calculator_WinUI.Views;
+using Calculator_WinUI.Models;
 
 namespace Calculator_WinUI.Views
 {
