@@ -43,32 +43,27 @@
                     Orientation="Horizontal"
                     Spacing="8">
 
-                    <!--  page title  -->
                     <TextBlock
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Style="{ThemeResource SubtitleTextBlockStyle}"
                         Text="Standard" />
 
-                    <!--  compact overlay button  -->
                     <Button
                         Width="32"
                         Height="32"
                         Padding="0"
-                        Background="Transparent"
-                        BorderBrush="Transparent">
+                        Style="{ThemeResource SubtleButtonStyle}">
                         <FontIcon FontSize="16" Glyph="&#xE81C;" />
                     </Button>
                 </StackPanel>
 
-                <!--  history button  -->
                 <Button
                     Width="32"
                     Height="32"
                     Padding="0"
                     HorizontalAlignment="Right"
-                    Background="Transparent"
-                    BorderBrush="Transparent">
+                    Style="{ThemeResource SubtleButtonStyle}">
                     <FontIcon FontSize="16" Glyph="&#xE8A7;" />
                 </Button>
             </Grid>
@@ -92,15 +87,15 @@
                         Grid.Row="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Foreground="Gray"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Style="{ThemeResource BodyLargeTextBlockStyle}"
                         Text="{x:Bind ViewModel.CalculationText, Mode=OneWay}" />
 
                     <TextBlock
                         Grid.Row="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        FontSize="48"
-                        FontWeight="SemiBold"
+                        Style="{ThemeResource TitleLargeTextBlockStyle}"
                         Text="{x:Bind ViewModel.InputAndResultText, Mode=OneWay}" />
                 </Grid>
             </ScrollViewer>
