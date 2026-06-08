@@ -13,20 +13,32 @@ namespace Calculator_WinUI.ViewModels
         private ConvertCurrency _converter;
 
         // ui properties
-        public List<string> AvailableCurrencies { get; set; } // the dynamic list of all currencies
+        public List<CurrencyInfo> AvailableCurrencies { get; set; }
 
-        private string _selectedCurrency1;
-        public string SelectedCurrency1
+        private CurrencyInfo _selectedCurrency1;
+        public CurrencyInfo SelectedCurrency1
         {
             get => _selectedCurrency1;
-            set { _selectedCurrency1 = value; OnPropertyChanged(); UpdateRateText(); }
+            set
+            {
+                if (_selectedCurrency1 == value) return; // prevent stackoverflow 
+                _selectedCurrency1 = value;
+                OnPropertyChanged();
+                UpdateRateText();
+            }
         }
 
-        private string _selectedCurrency2;
-        public string SelectedCurrency2
+        private CurrencyInfo _selectedCurrency2;
+        public CurrencyInfo SelectedCurrency2
         {
             get => _selectedCurrency2;
-            set { _selectedCurrency2 = value; OnPropertyChanged(); UpdateRateText(); }
+            set
+            {
+                if (_selectedCurrency2 == value) return; // prevent stackoverflow 
+                _selectedCurrency2 = value;
+                OnPropertyChanged();
+                UpdateRateText();
+            }
         }
 
         private string _inputText = "0";
@@ -64,12 +76,14 @@ namespace Calculator_WinUI.ViewModels
         {
             _converter = new ConvertCurrency();
 
-            // pull the list of available currencies
-            AvailableCurrencies = _converter.ExchangeRates.Keys.ToList();
+            // dynamically build the list of currency objects
+            AvailableCurrencies = _converter.ExchangeRates.Keys
+                .Select(code => CurrencyHelper.GetInfo(code))
+                .ToList();
 
-            // standdard currencies
-            SelectedCurrency1 = "EUR";
-            SelectedCurrency2 = "USD";
+            // standard currencies
+            SelectedCurrency1 = AvailableCurrencies.FirstOrDefault(c => c.Code == "EUR");
+            SelectedCurrency2 = AvailableCurrencies.FirstOrDefault(c => c.Code == "USD");
 
             // connect buttons to the methods
             InputCommand = new RelayCommand<string>(AddInput);
@@ -101,10 +115,13 @@ namespace Calculator_WinUI.ViewModels
 
         private void Calculate()
         {
+            if (SelectedCurrency1 == null || SelectedCurrency2 == null) return;
+
             // converts the input string to a double
             if (double.TryParse(InputText, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out double amount))
             {
-                ResultText = _converter.GetAmountCurrency2(SelectedCurrency1, SelectedCurrency2, amount);
+                // we only pass the .Code string to the math logic
+                ResultText = _converter.GetAmountCurrency2(SelectedCurrency1.Code, SelectedCurrency2.Code, amount);
             }
             else
             {
@@ -114,10 +131,11 @@ namespace Calculator_WinUI.ViewModels
 
         private void UpdateRateText()
         {
-            // updates exchange rate text
-            if (_converter == null || string.IsNullOrEmpty(SelectedCurrency1) || string.IsNullOrEmpty(SelectedCurrency2)) return;
-            string rate = _converter.GetCurrencyRate(SelectedCurrency1, SelectedCurrency2);
-            RateText = $"1 {SelectedCurrency1} = {rate} {SelectedCurrency2}";
+            if (_converter == null || SelectedCurrency1 == null || SelectedCurrency2 == null) return;
+
+            // we only pass the .Code string to the math logic
+            string rate = _converter.GetCurrencyRate(SelectedCurrency1.Code, SelectedCurrency2.Code);
+            RateText = $"1 {SelectedCurrency1.Code} = {rate} {SelectedCurrency2.Code}";
         }
 
         private void RefreshRates()

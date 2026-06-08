@@ -16,9 +16,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="*" MinHeight="40" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="*" MinHeight="40" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
@@ -69,81 +69,111 @@
 
 
             <!--  currency 1 selection  -->
-            <ComboBox
+            <DropDownButton
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Height="26"
                 Margin="0"
-                Padding="0"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Right"
                 Background="Transparent"
                 BorderThickness="0"
+                Content="{x:Bind ViewModel.SelectedCurrency1.DisplayName, Mode=OneWay}"
                 FontSize="12"
-                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                ItemsSource="{x:Bind ViewModel.AvailableCurrencies}"
-                SelectedItem="{x:Bind ViewModel.SelectedCurrency1, Mode=TwoWay}">
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}">
 
-                <ComboBox.Resources>
-                    <SolidColorBrush x:Key="ComboBoxBackground" Color="Transparent" />
-                    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="Transparent" />
-                </ComboBox.Resources>
-            </ComboBox>
+                <DropDownButton.Flyout>
+                    <Flyout Placement="BottomEdgeAlignedRight">
+
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="MaxWidth" Value="250" />
+                                <Setter Property="MaxHeight" Value="350" />
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="CornerRadius" Value="8" />
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+
+                        <ListView
+                            DisplayMemberPath="DisplayName"
+                            ItemsSource="{x:Bind ViewModel.AvailableCurrencies}"
+                            SelectedItem="{x:Bind ViewModel.SelectedCurrency1, Mode=TwoWay}"
+                            SelectionMode="Single" />
+
+                    </Flyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>
 
             <ScrollViewer
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Margin="0"
+                Padding="0"
                 Background="Transparent"
                 HorizontalScrollBarVisibility="Auto"
                 VerticalScrollBarVisibility="Disabled">
                 <TextBlock
                     x:Name="TextBlock_Currency1"
-                    Margin="5,-5,5,0"
+                    Margin="5,-12,5,0"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Center"
                     Style="{ThemeResource TitleLargeTextBlockStyle}"
                     Text="{x:Bind ViewModel.InputText, Mode=OneWay}" />
             </ScrollViewer>
 
 
             <!--  currency 2 selection  -->
-            <ComboBox
+            <DropDownButton
                 Grid.Row="3"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Height="26"
                 Margin="0"
-                Padding="0"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Right"
                 Background="Transparent"
                 BorderThickness="0"
+                Content="{x:Bind ViewModel.SelectedCurrency2.DisplayName, Mode=OneWay}"
                 FontSize="12"
-                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                ItemsSource="{x:Bind ViewModel.AvailableCurrencies}"
-                SelectedItem="{x:Bind ViewModel.SelectedCurrency2, Mode=TwoWay}">
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}">
 
-                <ComboBox.Resources>
-                    <SolidColorBrush x:Key="ComboBoxBackground" Color="Transparent" />
-                    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="Transparent" />
-                </ComboBox.Resources>
-            </ComboBox>
+                <DropDownButton.Flyout>
+                    <Flyout Placement="BottomEdgeAlignedRight">
+
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="MaxWidth" Value="250" />
+                                <Setter Property="MaxHeight" Value="350" />
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="CornerRadius" Value="8" />
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+
+                        <ListView
+                            DisplayMemberPath="DisplayName"
+                            ItemsSource="{x:Bind ViewModel.AvailableCurrencies}"
+                            SelectedItem="{x:Bind ViewModel.SelectedCurrency2, Mode=TwoWay}"
+                            SelectionMode="Single" />
+
+                    </Flyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>
 
             <ScrollViewer
                 Grid.Row="4"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Margin="0"
+                Background="Transparent"
                 HorizontalScrollBarVisibility="Auto"
                 VerticalScrollBarVisibility="Disabled">
                 <TextBlock
                     x:Name="TextBlock_Currency2"
-                    Margin="5,-3,5,0"
+                    Margin="5,-12,5,0"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Center"
                     Style="{ThemeResource TitleLargeTextBlockStyle}"
                     Text="{x:Bind ViewModel.ResultText, Mode=OneWay}" />
             </ScrollViewer>
