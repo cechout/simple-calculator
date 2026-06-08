@@ -14,11 +14,34 @@
     </Window.SystemBackdrop>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  custom title bar  -->
+        <TitleBar
+            Title="Simple Calculator"
+            Grid.Row="0"
+            Background="Transparent"
+            BorderBrush="White"
+            BorderThickness="0,0,0,1"
+            IsBackButtonVisible="False"
+            IsPaneToggleButtonVisible="False">
+
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="/Assets/Icon/Icon.ico" />
+            </TitleBar.IconSource>
+        </TitleBar>
+
+        <!--  navigation view  -->
         <NavigationView
             x:Name="NavView"
+            Grid.Row="1"
             IsBackButtonVisible="Collapsed"
             ItemInvoked="NavView_ItemInvoked"
-            OpenPaneLength="200">
+            OpenPaneLength="200"
+            PaneDisplayMode="LeftMinimal">
 
             <NavigationView.MenuItems>
                 <NavigationViewItem
@@ -31,8 +54,7 @@
                     Tag="Currency" />
             </NavigationView.MenuItems>
 
-            <Frame x:Name="MainFrame" />
-
+            <Frame x:Name="MainFrame" Margin="0,-2,0,0" />
         </NavigationView>
     </Grid>
 
