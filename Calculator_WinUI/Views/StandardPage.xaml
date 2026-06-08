@@ -31,6 +31,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+
             <!--  header  -->
             <Grid
                 Grid.Row="0"
@@ -68,6 +69,7 @@
                 </Button>
             </Grid>
 
+
             <!--  output display  -->
             <ScrollViewer
                 x:Name="outputScrollviewer"
@@ -99,6 +101,7 @@
                         Text="{x:Bind ViewModel.InputAndResultText, Mode=OneWay}" />
                 </Grid>
             </ScrollViewer>
+
 
             <!--  input buttons  -->
             <Button
@@ -137,7 +140,7 @@
                 VerticalAlignment="Stretch"
                 Command="{x:Bind ViewModel.BackspaceCommand}"
                 Style="{StaticResource OperatorButtonStyle}">
-                <FontIcon FontSize="16" Glyph="&#xE8A7;" />
+                <FontIcon FontSize="20" Glyph="&#xE750;" />
             </Button>
 
             <Button
