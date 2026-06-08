@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 
@@ -6,89 +7,44 @@ namespace Calculator_WinUI.Models
 {
     class GetCurrencyData
     {
-        //this variable can be used in the entire class
-        private XmlTextReader reader1;
-
-        //In the constructor we set the URLString when we create an object of the class GetCurrencyData
-        public GetCurrencyData()
+        public static Dictionary<string, double> FetchAllRates()
         {
-            String URLString = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml?69f7107f63e7ce4e4f9a922f93f74b4d";
-            reader1 = new XmlTextReader(URLString);
-        }
+            // a dictionary to store the currency codes and their corresponding rates
+            var rates = new Dictionary<string, double>();
 
-        public double GetDollar()
-        {
-            double dollar = 0;
+            // euro ist the base currency
+            rates.Add("EUR", 1.0);
 
-            while (reader1.Read())
+            string url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+
+            try
             {
-                if (reader1.NodeType == XmlNodeType.Element && reader1.Name == "Cube" && reader1.AttributeCount == 2 && reader1.GetAttribute(0) == "USD")
+                using (XmlReader reader = XmlReader.Create(url))
                 {
-                    dollar = Double.Parse(reader1.GetAttribute(1), CultureInfo.InvariantCulture);
-                    break;
+                    while (reader.Read())
+                    {
+                        // we only search elements named "Cube" that have attributes, because the rates are stored in such elements
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Cube" && reader.HasAttributes)
+                        {
+                            string currency = reader.GetAttribute("currency");
+                            string rateString = reader.GetAttribute("rate");
+
+                            // if we found a currency and a rate, we parse the rate and add it to our dictionary
+                            if (!string.IsNullOrEmpty(currency) && !string.IsNullOrEmpty(rateString))
+                            {
+                                double rate = double.Parse(rateString, CultureInfo.InvariantCulture);
+                                rates[currency] = rate;
+                            }
+                        }
+                    }
                 }
             }
-            return dollar;
-        }
-
-        public double GetYen()
-        {
-            double yen = 0;
-
-            while (reader1.Read())
+            catch (Exception)
             {
-                if (reader1.NodeType == XmlNodeType.Element && reader1.Name == "Cube" && reader1.AttributeCount == 2 && reader1.GetAttribute(0) == "JPY")
-                {
-                    yen = Double.Parse(reader1.GetAttribute(1), CultureInfo.InvariantCulture);
-                    break;
-                }
+                throw new Exception("error fetching currency rates");
             }
-            return yen;
-        }
 
-        public double GetKoruna()
-        {
-            double koruna = 0;
-
-            while (reader1.Read())
-            {
-                if (reader1.NodeType == XmlNodeType.Element && reader1.Name == "Cube" && reader1.AttributeCount == 2 && reader1.GetAttribute(0) == "CZK")
-                {
-                    koruna = Double.Parse(reader1.GetAttribute(1), CultureInfo.InvariantCulture);
-                    break;
-                }
-            }
-            return koruna;
-        }
-
-        public double GetPound()
-        {
-            double pound = 0;
-
-            while (reader1.Read())
-            {
-                if (reader1.NodeType == XmlNodeType.Element && reader1.Name == "Cube" && reader1.AttributeCount == 2 && reader1.GetAttribute(0) == "GBP")
-                {
-                    pound = Double.Parse(reader1.GetAttribute(1), CultureInfo.InvariantCulture);
-                    break;
-                }
-            }
-            return pound;
-        }
-
-        public double GetYuan()
-        {
-            double yuan = 0;
-
-            while (reader1.Read())
-            {
-                if (reader1.NodeType == XmlNodeType.Element && reader1.Name == "Cube" && reader1.AttributeCount == 2 && reader1.GetAttribute(0) == "CNY")
-                {
-                    yuan = Double.Parse(reader1.GetAttribute(1), CultureInfo.InvariantCulture);
-                    break;
-                }
-            }
-            return yuan;
+            return rates;
         }
     }
 }
