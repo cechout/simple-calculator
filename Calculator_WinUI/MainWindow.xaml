@@ -44,16 +44,20 @@
             PaneDisplayMode="LeftMinimal">
 
             <NavigationView.MenuItems>
-                <NavigationViewItem
-                    Content="Standard"
-                    Icon="Calculator"
-                    Tag="Standard" />
-                <NavigationViewItem
-                    Content="Currency"
-                    Icon="Globe"
-                    Tag="Currency" />
+                <NavigationViewItem Content="Standard" Tag="Standard">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE8EF;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="Currency" Tag="Currency">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE825;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
 
+            <!--  margin to manually get rid of border from navigation view  -->
             <Frame x:Name="MainFrame" Margin="0,-2,0,0" />
         </NavigationView>
     </Grid>
