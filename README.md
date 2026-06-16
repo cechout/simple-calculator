@@ -1,22 +1,23 @@
-<img width="2560" height="810" alt="Title" src="https://github.com/user-attachments/assets/5fc4473f-89c1-49ba-a5d5-22cd9d90b4cf" />
+<img width="2560" height="810" alt="frame2" src="https://github.com/user-attachments/assets/ea524baf-ce68-42b2-8db9-5287a9ef363e" />
 
 ###
 
-This project focuses on modernizing an already **fully completed WPF calculator app**. The goal is to port the application natively to **WinUI 3** (Windows 11 Fluent Design) and to refactor its underlying architecture to the **MVVM (Model-View-ViewModel)** pattern.
+Simple Calculator is a native Windows 11 application built with C#, WinUI 3, and the MVVM pattern. Its goal is to provide an alternative to the default Windows Calculator. While the default app evaluates inputs step-by-step, this app works like a real physical calculator: you type the entire equation first and press `=` to calculate the final result.
 
-## 📖 Project Background & Vision: WPF to WinUI 3 & MVVM
 
-### The Foundation (WPF - Completed)
-The original WPF application is finished and serves as a stable reference point for the entire project.
-* **Status:** Finished (Archived at Tag `v1.0.0`).
-* **Scope:** A simple standard arithmetic calculator and a real-time currency converter.
-* **Architecture:** Built with WPF using a custom navigation system, classic XAML styling, and UI-coupled code-behind logic.
+## 📖 Project History & Architecture
+The first version of this project (`v1.0.0`) was written in WPF. For version 2.0.0, the UI framework and the code structure were changed:
+* **WinUI 3:** Replaced WPF controls with Windows App SDK components (like `NavigationView`).
+* **MVVM:** Separated the mathematical logic from the user interface. The code is divided into Models, Views, and ViewModels. They communicate via data binding and commands.
 
-### The Goal (WinUI 3 - In Progress)
-The objective is to make the app look and feel native to Windows 11 while establishing a clean, maintainable codebase.
-* **UI Modernization (WinUI 3):** Replacing all old UI parts with native WinUI elements. Moving away from custom WPF workarounds to use official Windows App SDK controls like `NavigationView`.
-* **Architectural Shift (MVVM):** Transitioning from code-behind to a strict MVVM architecture. This decouples the mathematical logic from the user interface, utilizing proper data binding and commands.
-* **Logic Improvements:** Refactoring the underlying math engine to improve the cumbersome input system and provide a solid foundation for new calculation features.
+
+## ⚙️ Core Mechanics
+### Expression Input in Standard Mode
+The default Windows Calculator calculates a result after every operator. This app works like a real physical calculator (like a Casio). You type the whole equation exactly as you write it on paper (e.g., `(5 + 3) * 8 / 2`). It calculates everything at once when you press `=`. This guarantees the correct mathematical order of operations.
+
+### Currency Converter
+The app downloads daily exchange rates as an XML file from the European Central Bank (ECB). It uses an `XmlReader` to parse the data directly into a C# dictionary to calculate currency conversions. The base currency is the Euro (EUR).
+
 
 ## 🛠️ How to Run
 
@@ -29,7 +30,7 @@ Before opening the solution, make sure you have the following workloads installe
 
 ### 2. Clone the Repository
 ```ps
-git close https://github.com/cechout/simple-calculator.git
+git clone https://github.com/cechout/simple-calculator.git
 ```
 
 ### 3. Build and Run
