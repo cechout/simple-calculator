@@ -17,30 +17,49 @@ namespace Calculator_WinUI.Views
 {
     public sealed partial class SettingsPage : Page
     {
+        private bool _isLoading = true;
+
         public SettingsPage()
         {
             InitializeComponent();
+
+            RestoreThemeSelection();
+            _isLoading = false;
         }
 
         // theme combo box
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
-            {
-                string themeTag = selectedItem.Tag?.ToString();
+            if (_isLoading) return;
 
-                // we get the absolute root element of the current window
-                if (this.XamlRoot?.Content is FrameworkElement rootElement)
+            if (ThemeComboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string themeTag = selectedItem.Tag.ToString();
+                if (MainWindow.Instance != null)
                 {
-                    // Match-Mapping for the ElementTheme enum
-                    rootElement.RequestedTheme = themeTag switch
-                    {
-                        "Light" => ElementTheme.Light,
-                        "Dark" => ElementTheme.Dark,
-                        _ => ElementTheme.Default // system default
-                    };
+                    MainWindow.Instance.ApplyTheme(themeTag);
                 }
             }
+        }
+        private void RestoreThemeSelection()
+        {
+            // we read the currently active theme from our main window memory
+            string currentTheme = "Default";
+            if (MainWindow.Instance != null)
+            {
+                currentTheme = MainWindow.Instance.CurrentTheme;
+            }
+
+            // we search through all the items in the combo box and compare their tag
+            foreach (ComboBoxItem item in ThemeComboBox.Items)
+            {
+                if (item.Tag?.ToString() == currentTheme)
+                {
+                    ThemeComboBox.SelectedItem = item;
+                    return;
+                }
+            }
+            ThemeComboBox.SelectedIndex = 0;
         }
     }
 }
