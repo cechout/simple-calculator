@@ -4,7 +4,6 @@
 ## Get latest from `dotnet new gitignore`
 
 # specific folders
-Calculator/Setup/Output
 /Setup/Output/
 
 # dotenv files
