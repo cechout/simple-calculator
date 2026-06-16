@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -12,10 +12,14 @@
     <WinUISDKReferences>false</WinUISDKReferences>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+
+	  <ApplicationIcon>Assets\Icon\Icon.ico</ApplicationIcon>
+	  <WindowsPackageType>None</WindowsPackageType>
+	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Assets\Icons\Icon1.ico" />
-    <None Remove="Assets\Icons\Icon1.png" />
+    <None Remove="Assets\Icon\Icon.ico" />
+    <None Remove="Assets\Icon\Icon.png" />
     <None Remove="Views\SettingsPage.xaml" />
   </ItemGroup>
 
@@ -49,10 +53,10 @@
     <PackageReference Include="WinUIEx" Version="2.9.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Assets\Icons\Icon1.ico">
+    <Content Update="Assets\Icon\Icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Update="Assets\Icons\Icon1.png">
+    <Content Update="Assets\Icon\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

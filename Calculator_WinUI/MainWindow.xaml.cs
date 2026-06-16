@@ -40,6 +40,7 @@ namespace Calculator_WinUI
             manager.MinHeight = 450;
         }
 
+        // click navigation
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             string itemTag = args.InvokedItemContainer.Tag.ToString();

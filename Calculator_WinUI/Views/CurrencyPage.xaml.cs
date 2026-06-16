@@ -5,8 +5,7 @@ namespace Calculator_WinUI.Views
 {
     public sealed partial class CurrencyPage : Page
     {
-        // connect to ViewModel
-        public CurrencyViewModel ViewModel { get; }
+        public CurrencyViewModel ViewModel { get; } 
 
         public CurrencyPage()
         {

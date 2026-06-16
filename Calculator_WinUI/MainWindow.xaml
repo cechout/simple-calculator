@@ -39,6 +39,7 @@
             x:Name="NavView"
             Grid.Row="1"
             IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
             ItemInvoked="NavView_ItemInvoked"
             OpenPaneLength="200"
             PaneDisplayMode="LeftMinimal">
@@ -56,6 +57,14 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Settings" Tag="Settings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE713;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
 
             <!--  margin to manually get rid of border from navigation view  -->
             <Frame x:Name="MainFrame" Margin="0,-2,0,0" />
