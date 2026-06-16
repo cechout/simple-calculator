@@ -48,23 +48,23 @@
                         Style="{ThemeResource SubtitleTextBlockStyle}"
                         Text="Currency" />
 
-                    <Button
+                    <!--<Button
                         Width="32"
                         Height="32"
                         Padding="0"
                         Style="{ThemeResource SubtleButtonStyle}">
                         <FontIcon FontSize="16" Glyph="&#xE81C;" />
-                    </Button>
+                    </Button>-->
                 </StackPanel>
 
-                <Button
+                <!--<Button
                     Width="32"
                     Height="32"
                     Padding="0"
                     HorizontalAlignment="Right"
                     Style="{ThemeResource SubtleButtonStyle}">
                     <FontIcon FontSize="16" Glyph="&#xE8A7;" />
-                </Button>
+                </Button>-->
             </Grid>
 
 
@@ -252,7 +252,10 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.ClearCommand}"
                     Style="{StaticResource OperatorButtonStyle}">
-                    <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="CE" />
+                    <TextBlock
+                        FontSize="16"
+                        Style="{ThemeResource BodyLargeTextBlockStyle}"
+                        Text="CE" />
                 </Button>
                 <Button
                     Grid.Row="0"
@@ -261,7 +264,7 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.BackspaceCommand}"
                     Style="{StaticResource OperatorButtonStyle}">
-                    <FontIcon FontSize="20" Glyph="&#xE750;" />
+                    <FontIcon FontSize="16" Glyph="&#xE750;" />
                 </Button>
 
                 <Button

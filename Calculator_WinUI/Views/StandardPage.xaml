@@ -50,23 +50,23 @@
                         Style="{ThemeResource SubtitleTextBlockStyle}"
                         Text="Standard" />
 
-                    <Button
+                    <!--<Button
                         Width="32"
                         Height="32"
                         Padding="0"
                         Style="{ThemeResource SubtleButtonStyle}">
                         <FontIcon FontSize="16" Glyph="&#xE81C;" />
-                    </Button>
+                    </Button>-->
                 </StackPanel>
 
-                <Button
+                <!--<Button
                     Width="32"
                     Height="32"
                     Padding="0"
                     HorizontalAlignment="Right"
                     Style="{ThemeResource SubtleButtonStyle}">
                     <FontIcon FontSize="16" Glyph="&#xE8A7;" />
-                </Button>
+                </Button>-->
             </Grid>
 
 
@@ -114,7 +114,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="("
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="(" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="(" />
             </Button>
             <Button
                 Grid.Row="2"
@@ -124,7 +127,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter=")"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text=")" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text=")" />
             </Button>
             <Button
                 Grid.Row="2"
@@ -133,7 +139,10 @@
                 VerticalAlignment="Stretch"
                 Command="{x:Bind ViewModel.ClearCommand}"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="CE" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="CE" />
             </Button>
             <Button
                 Grid.Row="2"
@@ -142,7 +151,7 @@
                 VerticalAlignment="Stretch"
                 Command="{x:Bind ViewModel.BackspaceCommand}"
                 Style="{StaticResource OperatorButtonStyle}">
-                <FontIcon FontSize="20" Glyph="&#xE750;" />
+                <FontIcon FontSize="16" Glyph="&#xE750;" />
             </Button>
 
             <Button
@@ -153,7 +162,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="^2"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="^2" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="^2" />
             </Button>
             <Button
                 Grid.Row="3"
@@ -163,7 +175,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="^"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="^" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="^" />
             </Button>
             <Button
                 Grid.Row="3"
@@ -173,7 +188,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="2√"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="2√" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="2√" />
             </Button>
             <Button
                 Grid.Row="3"
@@ -183,7 +201,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="√"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="√" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="√" />
             </Button>
 
             <Button
@@ -224,7 +245,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="/"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="/" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="/" />
             </Button>
 
             <Button
@@ -265,7 +289,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="*"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="*" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="*" />
             </Button>
 
             <Button
@@ -306,7 +333,10 @@
                 Command="{x:Bind ViewModel.InputCommand}"
                 CommandParameter="-"
                 Style="{StaticResource OperatorButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="-" />
+                <TextBlock
+                    FontSize="14"
+                    Style="{ThemeResource BodyLargeTextBlockStyle}"
+                    Text="-" />
             </Button>
 
             <Button
@@ -352,7 +382,10 @@
                 VerticalAlignment="Stretch"
                 Command="{x:Bind ViewModel.CalculateCommand}"
                 Style="{ThemeResource AccentButtonStyle}">
-                <TextBlock Style="{ThemeResource BodyLargeTextBlockStyle}" Text="=" />
+                <FontIcon
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Glyph="&#xE94E;" />
             </Button>
         </Grid>
     </Border>
