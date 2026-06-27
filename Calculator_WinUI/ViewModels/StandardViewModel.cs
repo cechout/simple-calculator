@@ -22,7 +22,7 @@ namespace Calculator_WinUI.ViewModels
                 if (_inputAndResultText != value)
                 {
                     _inputAndResultText = value;
-                    OnPropertyChanged(); // Sagt dem XAML: "Aktualisiere den Text!"
+                    OnPropertyChanged(); 
                 }
             }
         }
@@ -39,7 +39,6 @@ namespace Calculator_WinUI.ViewModels
                 }
             }
         }
-
 
         // commands
         public ICommand InputCommand { get; }
@@ -58,7 +57,6 @@ namespace Calculator_WinUI.ViewModels
         }
 
 
-        // methods
         private void AddToTextBox(string sign)
         {
             if (sign == "+" || sign == "-" || sign == "*" || sign == "/")
@@ -67,6 +65,7 @@ namespace Calculator_WinUI.ViewModels
             }
             else
             {
+                // "sign" (z.B. "7") wird hier übergeben und kommt im Manager als "digit" an
                 _inputManager.AddNumber(sign);
             }
 
@@ -87,7 +86,7 @@ namespace Calculator_WinUI.ViewModels
 
         private void Backspace()
         {
-            _inputManager.Backspace();
+            //_inputManager.Backspace();
             InputAndResultText = _inputManager.GetLatexString();
         }
 
