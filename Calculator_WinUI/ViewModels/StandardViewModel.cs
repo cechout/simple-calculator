@@ -59,16 +59,58 @@ namespace Calculator_WinUI.ViewModels
 
         private void AddToTextBox(string sign)
         {
-            if (sign == "+" || sign == "-" || sign == "*" || sign == "/")
+            if (sign.StartsWith("cmd_"))
+            {
+                switch (sign)
+                {
+                    case "cmd_nav_right":
+                        _inputManager.MoveRight();
+                        break;
+
+                    case "cmd_sqrt":
+                        _inputManager.StartRoot(customIndex: false);
+                        break;
+                    case "cmd_root_n":
+                        _inputManager.StartRoot(customIndex: true);
+                        break;
+
+                    case "cmd_pow_n":
+                        _inputManager.StartPower();
+                        break;
+                    case "cmd_pow_2":
+                        _inputManager.StartPower();
+                        _inputManager.AddNumber("2");
+                        _inputManager.MoveRight();
+                        break;
+
+                    case "cmd_sin":
+                        _inputManager.StartFunction("sin");
+                        break;
+                    case "cmd_cos":
+                        _inputManager.StartFunction("cos");
+                        break;
+                    case "cmd_tan":
+                        _inputManager.StartFunction("tan");
+                        break;
+
+                    // TODO
+                    case "cmd_shift":
+                    case "cmd_frac":
+                    case "cmd_log":
+                        break;
+                }
+            }
+            // old logic
+            else if (sign == "+" || sign == "-" || sign == "*" || sign == "/")
             {
                 _inputManager.AddOperator(sign);
             }
             else
             {
-                // "sign" (z.B. "7") wird hier übergeben und kommt im Manager als "digit" an
                 _inputManager.AddNumber(sign);
             }
 
+            // update UI
             InputAndResultText = _inputManager.GetLatexString();
         }
 
