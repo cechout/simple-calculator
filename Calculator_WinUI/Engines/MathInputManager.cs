@@ -6,110 +6,139 @@ namespace Calculator_WinUI.Engines
 {
     public class MathInputManager
     {
-        private List<MathToken> _tokens = new List<MathToken>(); // list of our custom math tokens
-        private MathToken LastToken => _tokens.LastOrDefault();
+        private readonly List<MathToken> _rootTokens = new List<MathToken>();
 
-        public void AddNumber(string numberString)
+        // the stack that keeps track of which sublist we are currently writing to
+        private readonly Stack<List<MathToken>> _scopeStack = new Stack<List<MathToken>>();
+
+        // returns the top List<MathToken> from _scopeStack via Peek() if _scopeStack is not empty.
+        // otherwise, returns _rootTokens when no nested scopes are active
+        private List<MathToken> CurrentScope
         {
-            // if token is already number
-            if (LastToken != null && LastToken.Type == TokenType.Number)
+            get
             {
-                // prevents double commas
-                if (numberString == "." && LastToken.Value.Contains(".")) return;
+                if (_scopeStack.Count > 0)
+                {
+                    return _scopeStack.Peek();
+                }
+                else
+                {
+                    return _rootTokens;
+                }
+            }
+        }
 
-                LastToken.Value += numberString;
+        // return last token from current scope
+        private MathToken LastTokenInScope
+        {
+            get
+            {
+                return CurrentScope.LastOrDefault();
+            }
+        }
+
+
+        // constructor
+        public MathInputManager()
+        {
+            ResetToRoot();
+        }
+
+
+        // reset
+        public void ResetToRoot()
+        {
+            _scopeStack.Clear();
+        }
+
+        // movement
+        // (exits the current scope to the right; e.g. exits the exponent)
+        public bool MoveRight()
+        {
+            if (_scopeStack.Count > 0)
+            {
+                _scopeStack.Pop();
+                return true; // successfully moved one layer up
+            }
+            return false; // we are already at root layer
+        }
+
+        public void AddNumber(string digit)
+        {
+            if (LastTokenInScope != null && LastTokenInScope.Type == TokenType.Number)
+            {
+                if (digit == "." && LastTokenInScope.Value.Contains(".")) return;
+                LastTokenInScope.Value += digit;
             }
             else
             {
-                // if there was an operator there before, we start a new number token
-                _tokens.Add(new MathToken(TokenType.Number, numberString));
+                CurrentScope.Add(new MathToken(TokenType.Number, digit));
             }
         }
 
         public void AddOperator(string op)
         {
-            // no operator in the beginning
-            if (LastToken == null) return;
+            if (LastTokenInScope == null) return;
 
-            // if the user presses '+' but the last token was already '-', we swap the operator 
-            if (LastToken.Type == TokenType.Operator)
+            if (LastTokenInScope.Type == TokenType.Operator)
             {
-                LastToken.Value = op;
+                LastTokenInScope.Value = op;
             }
-            else if (LastToken.Type == TokenType.Number || LastToken.Type == TokenType.BracketClose)
+            else
             {
-                // an operator may normally only be added after a number or a closing bracket
-                _tokens.Add(new MathToken(TokenType.Operator, op));
+                CurrentScope.Add(new MathToken(TokenType.Operator, op));
             }
         }
 
-        public string GetLatexString()
+        // creates a power x^y
+        public void StartPower()
         {
-            // wenn noch nichts getippt wurde, zeigen wir einfach eine 0
-            if (_tokens.Count == 0) return "0";
+            var powerToken = new PowerToken();
 
-            string latex = "";
-
-            foreach (var token in _tokens)
+            // if there was a number on the left, we take it as the base for the power
+            if (LastTokenInScope != null && (LastTokenInScope.Type == TokenType.Number || LastTokenInScope.Type == TokenType.BracketClose))
             {
-                if (token.Type == TokenType.Number)
-                {
-                    latex += token.Value;
-                }
-                else if (token.Type == TokenType.Operator)
-                {
-                    // we translate the raw c# symbols in clean LaTeX commands
-                    switch (token.Value)
-                    {
-                        case "*":
-                            latex += " \\cdot "; 
-                            break;
-                        case "/":
-                            latex += " \\div ";
-                            break;
-                        case "+":
-                            latex += " + ";
-                            break;
-                        case "-":
-                            latex += " - ";
-                            break;
-                        default:
-                            latex += token.Value;
-                            break;
-                    }
-                }
-                else if (token.Type == TokenType.BracketOpen)
-                {
-                    latex += "(";
-                }
-                else if (token.Type == TokenType.BracketClose)
-                {
-                    latex += ")";
-                }
+                powerToken.BaseTokens.Add(LastTokenInScope);
+                CurrentScope.RemoveAt(CurrentScope.Count - 1); 
             }
 
-            return latex;
+            CurrentScope.Add(powerToken);
+            _scopeStack.Push(powerToken.ExponentTokens); // now we move the pointer to the exponent
+        }
+
+        // creates a root
+        public void StartRoot(bool customIndex)
+        {
+            var rootToken = new RootToken();
+            CurrentScope.Add(rootToken);
+
+            if (customIndex)
+            {
+                _scopeStack.Push(rootToken.IndexTokens); 
+            }
+            else
+            {
+                _scopeStack.Push(rootToken.RadicandTokens); 
+            }
+        }
+
+        // creates sin, cos, tan, ln
+        public void StartFunction(string name)
+        {
+            var funcToken = new FunctionToken(name);
+            CurrentScope.Add(funcToken);
+            _scopeStack.Push(funcToken.ParameterTokens); 
         }
 
         public void Clear()
         {
-            _tokens.Clear();
+            _rootTokens.Clear();
+            _scopeStack.Clear();
         }
 
-        public void Backspace()
+        public string GetLatexString()
         {
-            if (_tokens.Count == 0) return;
-
-            if (LastToken.Type == TokenType.Number && LastToken.Value.Length > 1)
-            {
-                // if its a  number, we only cut the last digit
-                LastToken.Value = LastToken.Value.Substring(0, LastToken.Value.Length - 1);
-            }
-            else
-            {
-                // if its an operators, function or single-digit number, the whole token gets cut
-                _tokens.RemoveAt(_tokens.Count - 1);
-            }
+            return LatexHelper.GetListLatex(_rootTokens);
         }
     }
 }
