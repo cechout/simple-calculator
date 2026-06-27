@@ -43,6 +43,54 @@ namespace Calculator_WinUI.Engines
             }
         }
 
+        public string GetLatexString()
+        {
+            // wenn noch nichts getippt wurde, zeigen wir einfach eine 0
+            if (_tokens.Count == 0) return "0";
+
+            string latex = "";
+
+            foreach (var token in _tokens)
+            {
+                if (token.Type == TokenType.Number)
+                {
+                    latex += token.Value;
+                }
+                else if (token.Type == TokenType.Operator)
+                {
+                    // we translate the raw c# symbols in clean LaTeX commands
+                    switch (token.Value)
+                    {
+                        case "*":
+                            latex += " \\cdot "; 
+                            break;
+                        case "/":
+                            latex += " \\div ";
+                            break;
+                        case "+":
+                            latex += " + ";
+                            break;
+                        case "-":
+                            latex += " - ";
+                            break;
+                        default:
+                            latex += token.Value;
+                            break;
+                    }
+                }
+                else if (token.Type == TokenType.BracketOpen)
+                {
+                    latex += "(";
+                }
+                else if (token.Type == TokenType.BracketClose)
+                {
+                    latex += ")";
+                }
+            }
+
+            return latex;
+        }
+
         public void Clear()
         {
             _tokens.Clear();

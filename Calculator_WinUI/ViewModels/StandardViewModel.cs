@@ -3,12 +3,14 @@ using Calculator_WinUI.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Calculator_WinUI.Engines;
 
 namespace Calculator_WinUI.ViewModels
 {
     public class StandardViewModel : INotifyPropertyChanged
     {
         private Calculate _calculator = new Calculate();
+        private readonly MathInputManager _inputManager = new MathInputManager();
 
         // ui properties 
         private string _inputAndResultText = "0";
@@ -59,42 +61,34 @@ namespace Calculator_WinUI.ViewModels
         // methods
         private void AddToTextBox(string sign)
         {
-            if (InputAndResultText == "0" && sign != ".")
+            if (sign == "+" || sign == "-" || sign == "*" || sign == "/")
             {
-                InputAndResultText = "";
+                _inputManager.AddOperator(sign);
             }
-            InputAndResultText += sign;
+            else
+            {
+                _inputManager.AddNumber(sign);
+            }
+
+            InputAndResultText = _inputManager.GetLatexString();
         }
 
         private void CalculateResult()
         {
             CalculationText = InputAndResultText + "=";
-            InputAndResultText = "(" + InputAndResultText + ")";
-
-            InputAndResultText = _calculator.PreCalculate(InputAndResultText);
-
-            if (InputAndResultText == "Error")
-            {
-                CalculationText = "";
-            }
         }
 
         private void ClearAll()
         {
-            InputAndResultText = "0";
+            _inputManager.Clear();
+            InputAndResultText = _inputManager.GetLatexString();
             CalculationText = "";
         }
 
         private void Backspace()
         {
-            if (InputAndResultText.Length <= 1)
-            {
-                InputAndResultText = "0";
-            }
-            else
-            {
-                InputAndResultText = InputAndResultText.Remove(InputAndResultText.Length - 1);
-            }
+            _inputManager.Backspace();
+            InputAndResultText = _inputManager.GetLatexString();
         }
 
 
