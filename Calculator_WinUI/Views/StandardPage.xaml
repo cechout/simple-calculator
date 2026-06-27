@@ -71,7 +71,7 @@
 
 
             <!--  output display  -->
-            <ScrollViewer
+            <!--<ScrollViewer
                 x:Name="outputScrollviewer"
                 Grid.Row="1"
                 Grid.ColumnSpan="4"
@@ -102,7 +102,21 @@
                         Style="{ThemeResource TitleLargeTextBlockStyle}"
                         Text="{x:Bind ViewModel.InputAndResultText, Mode=OneWay}" />
                 </Grid>
-            </ScrollViewer>
+            </ScrollViewer>-->
+
+            <WebView2
+                x:Name="MathWebView1"
+                Grid.Row="0"
+                Grid.ColumnSpan="4"
+                Margin="4,0,4,8"
+                DefaultBackgroundColor="Transparent" />
+
+            <WebView2
+                x:Name="MathWebView2"
+                Grid.Row="1"
+                Grid.ColumnSpan="4"
+                Margin="4,0,4,8"
+                DefaultBackgroundColor="Transparent" />
 
 
             <!--  input buttons  -->

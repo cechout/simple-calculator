@@ -49,7 +49,6 @@ namespace Calculator_WinUI.ViewModels
         // constructor
         public StandardViewModel()
         {
-            // Hier verknüpfen wir die Commands mit den Methoden
             InputCommand = new RelayCommand<string>(AddToTextBox);
             CalculateCommand = new RelayCommand<object>(_ => CalculateResult());
             ClearCommand = new RelayCommand<object>(_ => ClearAll());
