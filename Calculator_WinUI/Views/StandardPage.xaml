@@ -163,7 +163,19 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_shift"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
+                    <FontIcon FontSize="14" Glyph="&#xE752;" />
+                </Button>
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Command="{x:Bind ViewModel.InputCommand}"
+                    CommandParameter="cmd_shift"
+                    Style="{ThemeResource AccentButtonStyle}"
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <FontIcon FontSize="14" Glyph="&#xE752;" />
                 </Button>
                 <Button
@@ -244,7 +256,8 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_sqrt"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="²√" />
                 </Button>
                 <Button
@@ -255,7 +268,7 @@
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_root_n"
                     Style="{StaticResource OperatorButtonStyle}"
-                    Visibility="Collapsed">
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="ⁿ√" />
                 </Button>
                 <Button
@@ -265,7 +278,8 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_pow_2"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="x²" />
                 </Button>
                 <Button
@@ -276,7 +290,7 @@
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_pow_n"
                     Style="{StaticResource OperatorButtonStyle}"
-                    Visibility="Collapsed">
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="xⁿ" />
                 </Button>
                 <Button
@@ -286,7 +300,8 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_ln"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="ln" />
                 </Button>
                 <Button
@@ -297,7 +312,7 @@
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_log"
                     Style="{StaticResource OperatorButtonStyle}"
-                    Visibility="Collapsed">
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="log" />
                 </Button>
                 <Button
@@ -319,7 +334,8 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_sin"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="sin" />
                 </Button>
                 <Button
@@ -330,7 +346,7 @@
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_asin"
                     Style="{StaticResource OperatorButtonStyle}"
-                    Visibility="Collapsed">
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="sin⁻¹" />
                 </Button>
                 <Button
@@ -340,7 +356,8 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_cos"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="cos" />
                 </Button>
                 <Button
@@ -351,7 +368,7 @@
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_acos"
                     Style="{StaticResource OperatorButtonStyle}"
-                    Visibility="Collapsed">
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="cos⁻¹" />
                 </Button>
                 <Button
@@ -361,7 +378,8 @@
                     VerticalAlignment="Stretch"
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_tan"
-                    Style="{StaticResource OperatorButtonStyle}">
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Visibility="{x:Bind ViewModel.NormalVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="tan" />
                 </Button>
                 <Button
@@ -372,7 +390,7 @@
                     Command="{x:Bind ViewModel.InputCommand}"
                     CommandParameter="cmd_atan"
                     Style="{StaticResource OperatorButtonStyle}"
-                    Visibility="Collapsed">
+                    Visibility="{x:Bind ViewModel.ShiftVisibility, Mode=OneWay}">
                     <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="tan⁻¹" />
                 </Button>
                 <Button

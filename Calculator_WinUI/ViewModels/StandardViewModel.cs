@@ -1,9 +1,10 @@
 ﻿using Calculator_WinUI.Classes;
+using Calculator_WinUI.Engines;
 using Calculator_WinUI.Models;
+using Microsoft.UI.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Calculator_WinUI.Engines;
 
 namespace Calculator_WinUI.ViewModels
 {
@@ -37,6 +38,28 @@ namespace Calculator_WinUI.ViewModels
                     _calculationText = value;
                     OnPropertyChanged();
                 }
+            }
+        }
+
+        // toggle visibility of secondary buttons
+        private Visibility _normalVisibility = Visibility.Visible;
+        public Visibility NormalVisibility
+        {
+            get => _normalVisibility;
+            set
+            {
+                _normalVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        private Visibility _shiftVisibility = Visibility.Collapsed;
+        public Visibility ShiftVisibility
+        {
+            get => _shiftVisibility;
+            set
+            {
+                _shiftVisibility = value;
+                OnPropertyChanged();
             }
         }
 
@@ -93,8 +116,20 @@ namespace Calculator_WinUI.ViewModels
                         _inputManager.StartFunction("tan");
                         break;
 
-                    // TODO
                     case "cmd_shift":
+                        if (NormalVisibility == Visibility.Visible)
+                        {
+                            NormalVisibility = Visibility.Collapsed;
+                            ShiftVisibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            NormalVisibility = Visibility.Visible;
+                            ShiftVisibility = Visibility.Collapsed;
+                        }
+                        break;
+
+                    // TODO
                     case "cmd_frac":
                     case "cmd_log":
                         break;
