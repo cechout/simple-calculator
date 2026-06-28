@@ -34,7 +34,7 @@ namespace Calculator_WinUI.Models
             Value = value;
         }
 
-        public virtual string ToLatex() => Value;
+        public virtual string ToLatex() { return Value; }
     }
 
 
@@ -42,11 +42,17 @@ namespace Calculator_WinUI.Models
     public class FunctionToken : MathToken
     {
         public List<MathToken> ParameterTokens { get; } = new List<MathToken>();
+
+        // explicitly calls the base class constructor to initialize the inherited fields (Type, Value) before
+        // the derived class constructor block is executed, guaranteeing valid object state
         public FunctionToken(string functionName) : base(TokenType.SimpleFunction, functionName) { }
 
         public override string ToLatex()
         {
-            string innerLatex = ParameterTokens.Count > 0 ? LatexHelper.GetListLatex(ParameterTokens) : "";
+            string innerLatex;
+            if (ParameterTokens.Count > 0) { innerLatex = LatexHelper.GetListLatex(ParameterTokens); }
+            else { innerLatex = "?"; }
+
             return $"\\{Value}({innerLatex})";
         }
     }
@@ -60,8 +66,14 @@ namespace Calculator_WinUI.Models
 
         public override string ToLatex()
         {
-            string baseStr = BaseTokens.Count > 0 ? LatexHelper.GetListLatex(BaseTokens) : "?";
-            string expStr = ExponentTokens.Count > 0 ? LatexHelper.GetListLatex(ExponentTokens) : " "; // a space lets the cursor flash at top
+            string baseStr;
+            if (BaseTokens.Count > 0) { baseStr = LatexHelper.GetListLatex(BaseTokens); }
+            else { baseStr = "?"; }
+
+            string expStr;
+            if (ExponentTokens.Count > 0) { expStr = LatexHelper.GetListLatex(ExponentTokens); }
+            else { expStr = "?"; }
+
             return $"{baseStr}^{{{expStr}}}";
         }
     }
@@ -69,14 +81,16 @@ namespace Calculator_WinUI.Models
     // for roots -> \sqrt[index]{radicand}
     public class RootToken : MathToken
     {
-        public List<MathToken> IndexTokens { get; } = new List<MathToken>(); // for root exponents
+        public List<MathToken> IndexTokens { get; } = new List<MathToken>(); 
         public List<MathToken> RadicandTokens { get; } = new List<MathToken>();
-
         public RootToken() : base(TokenType.Root) { }
 
         public override string ToLatex()
         {
-            string radStr = RadicandTokens.Count > 0 ? LatexHelper.GetListLatex(RadicandTokens) : " ";
+            string radStr;
+            if (RadicandTokens.Count > 0) { radStr = LatexHelper.GetListLatex(RadicandTokens); }
+            else { radStr = " "; }
+
             if (IndexTokens.Count > 0)
             {
                 return $"\\sqrt[{LatexHelper.GetListLatex(IndexTokens)}]{{{radStr}}}";
@@ -90,13 +104,18 @@ namespace Calculator_WinUI.Models
     {
         public List<MathToken> BaseTokens { get; } = new List<MathToken>();
         public List<MathToken> ParameterTokens { get; } = new List<MathToken>();
-
         public LogarithmToken() : base(TokenType.Logarithm) { }
 
         public override string ToLatex()
         {
-            string baseStr = BaseTokens.Count > 0 ? LatexHelper.GetListLatex(BaseTokens) : "10"; // default base is 10
-            string paramStr = ParameterTokens.Count > 0 ? LatexHelper.GetListLatex(ParameterTokens) : " ";
+            string baseStr;
+            if (BaseTokens.Count > 0) { baseStr = LatexHelper.GetListLatex(BaseTokens); }
+            else { baseStr = "?"; }
+
+            string paramStr;
+            if (ParameterTokens.Count > 0) { paramStr = LatexHelper.GetListLatex(ParameterTokens);  }
+            else {  paramStr = " "; }
+
             return $"\\log_{{{baseStr}}}({paramStr})";
         }
     }
@@ -107,20 +126,20 @@ namespace Calculator_WinUI.Models
         public static string GetListLatex(List<MathToken> tokens)
         {
             string latex = "";
-            foreach (var t in tokens)
+            foreach (var currentToken in tokens)
             {
-                if (t.Type == TokenType.Operator)
+                if (currentToken.Type == TokenType.Operator)
                 {
-                    latex += t.Value switch
+                    latex += currentToken.Value switch
                     {
                         "*" => " \\cdot ",
                         "/" => " \\div ",
-                        _ => $" {t.Value} "
+                        _ => $" {currentToken.Value} "
                     };
                 }
                 else
                 {
-                    latex += t.ToLatex();
+                    latex += currentToken.ToLatex();
                 }
             }
             return latex;
