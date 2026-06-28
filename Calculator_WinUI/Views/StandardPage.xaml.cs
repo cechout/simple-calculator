@@ -60,6 +60,12 @@ namespace Calculator_WinUI.Views
             await MathWebView1.EnsureCoreWebView2Async();
             await MathWebView2.EnsureCoreWebView2Async();
 
+            // wenn der browser das html fertig geladen hat, schicken wir den startwert!
+            MathWebView2.NavigationCompleted += async (s, args) =>
+            {
+                await UpdateWebViewMath(MathWebView2, ViewModel.InputAndResultText);
+            };
+
             // WebView 1 configuration 
             string html1 = _kaTeXHtmlTemplate.Replace("[COLOR]", "gray").Replace("[SIZE]", "18px");
             MathWebView1.NavigateToString(html1);
@@ -67,8 +73,6 @@ namespace Calculator_WinUI.Views
             // WebView 2 configuration 
             string html2 = _kaTeXHtmlTemplate.Replace("[COLOR]", "white").Replace("[SIZE]", "36px");
             MathWebView2.NavigateToString(html2);
-
-            await UpdateWebViewMath(MathWebView2, ViewModel.InputAndResultText);
         }
 
         private async void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
