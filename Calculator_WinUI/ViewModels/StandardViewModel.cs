@@ -163,7 +163,7 @@ namespace Calculator_WinUI.ViewModels
 
         private void Backspace()
         {
-            //_inputManager.Backspace();
+            _inputManager.Backspace();
             InputAndResultText = _inputManager.GetLatexString();
         }
 

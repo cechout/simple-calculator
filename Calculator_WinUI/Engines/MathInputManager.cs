@@ -130,6 +130,38 @@ namespace Calculator_WinUI.Engines
             _scopeStack.Push(funcToken.ParameterTokens); 
         }
 
+        public void Backspace()
+        {
+            // case 1: we are in an empty subsection (empty exponent or smth)
+            // we delete the whole math token
+            if (CurrentScope.Count == 0 && _scopeStack.Count > 0)
+            {
+                _scopeStack.Pop();
+                if (CurrentScope.Count > 0)
+                {
+                    CurrentScope.RemoveAt(CurrentScope.Count - 1);
+                }
+                return;
+            }
+
+            // case 2: the current section has tokens 
+            if (CurrentScope.Count > 0)
+            {
+                var lastToken = LastTokenInScope;
+
+                // if token is multi-digit number
+                if (lastToken.Type == TokenType.Number && lastToken.Value.Length > 1)
+                {
+                    lastToken.Value = lastToken.Value.Substring(0, lastToken.Value.Length - 1);
+                }
+                else
+                {
+                    // if token is single-digit number of function or whatever
+                    CurrentScope.RemoveAt(CurrentScope.Count - 1);
+                }
+            }
+        }
+
         public void Clear()
         {
             _rootTokens.Clear();
@@ -138,6 +170,7 @@ namespace Calculator_WinUI.Engines
 
         public string GetLatexString()
         {
+            if (_rootTokens.Count == 0) return "0";
             return LatexHelper.GetListLatex(_rootTokens);
         }
     }
