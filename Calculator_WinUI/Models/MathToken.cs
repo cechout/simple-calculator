@@ -120,6 +120,28 @@ namespace Calculator_WinUI.Models
         }
     }
 
+    // for fractions -> \frac{numerator}{denominator}
+    public class FractionToken : MathToken
+    {
+        public List<MathToken> NumeratorTokens { get; } = new List<MathToken>(); 
+        public List<MathToken> DenominatorTokens { get; } = new List<MathToken>(); 
+
+        public FractionToken() : base(TokenType.Fraction) { }
+
+        public override string ToLatex()
+        {
+            string numStr;
+            if (NumeratorTokens.Count > 0) { numStr = LatexHelper.GetListLatex(NumeratorTokens); }
+            else { numStr = " "; }
+
+            string denStr;
+            if (DenominatorTokens.Count > 0) { denStr = LatexHelper.GetListLatex(DenominatorTokens); }
+            else { denStr = " "; }
+
+            return $"\\frac{{{numStr}}}{{{denStr}}}";
+        }
+    }
+
     // helper class for recursively generating token lists in LaTeX
     public static class LatexHelper
     {

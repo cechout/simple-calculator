@@ -130,6 +130,33 @@ namespace Calculator_WinUI.Engines
             _scopeStack.Push(funcToken.ParameterTokens); 
         }
 
+        // creates a fraction
+        public void StartFraction()
+        {
+            var fracToken = new FractionToken();
+            CurrentScope.Add(fracToken);
+
+            _scopeStack.Push(fracToken.NumeratorTokens); // pointer is on numerator
+        }
+
+        // creates a logarithm
+        public void StartLogarithm(bool customBase)
+        {
+            var logToken = new LogarithmToken();
+            CurrentScope.Add(logToken);
+
+            // we decide via the flag customBase wheter we want to point to the base or to the parameter after creation
+            if (customBase)
+            {
+                _scopeStack.Push(logToken.BaseTokens); 
+            }
+            else
+            {
+                _scopeStack.Push(logToken.ParameterTokens); 
+            }
+        }
+
+
         public void Backspace()
         {
             // case 1: we are in an empty subsection (empty exponent or smth)

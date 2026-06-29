@@ -93,6 +93,7 @@ namespace Calculator_WinUI.ViewModels
                     case "cmd_sqrt":
                         _inputManager.StartRoot(customIndex: false);
                         break;
+
                     case "cmd_root_n":
                         _inputManager.StartRoot(customIndex: true);
                         break;
@@ -100,6 +101,7 @@ namespace Calculator_WinUI.ViewModels
                     case "cmd_pow_n":
                         _inputManager.StartPower();
                         break;
+
                     case "cmd_pow_2":
                         _inputManager.StartPower();
                         _inputManager.AddNumber("2");
@@ -109,9 +111,11 @@ namespace Calculator_WinUI.ViewModels
                     case "cmd_sin":
                         _inputManager.StartFunction("sin");
                         break;
+
                     case "cmd_cos":
                         _inputManager.StartFunction("cos");
                         break;
+
                     case "cmd_tan":
                         _inputManager.StartFunction("tan");
                         break;
@@ -129,9 +133,16 @@ namespace Calculator_WinUI.ViewModels
                         }
                         break;
 
-                    // TODO
                     case "cmd_frac":
+                        _inputManager.StartFraction();
+                        break;
+
                     case "cmd_log":
+                        _inputManager.StartLogarithm(customBase: true);
+                        break;
+
+                    case "cmd_ln":
+                        _inputManager.StartFunction("ln");
                         break;
                 }
             }
